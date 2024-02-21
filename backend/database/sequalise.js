@@ -4,7 +4,7 @@ const database = process.env.DATABASE;
 const username = process.env.USERNAME;
 const pwd = process.env.PWD;
 
-const sequelize = new Sequelize("teaa", "root", "21018965", {
+const sequelize = new Sequelize("teaa", "root", "rootroot123", {
   host: "localhost",
   dialect: "mysql",
 });
@@ -202,7 +202,7 @@ Comment.belongsTo(User, {  onDelete: "CASCADE" });
 Comment.belongsTo(Product, {
   onDelete: "CASCADE",
 });
-sequelize.sync({ force: true });
+sequelize.sync({ alter: true });
 
 module.exports = {
   Product: Product,
