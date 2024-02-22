@@ -1,5 +1,6 @@
 const Panier = require("../database/panierFunction");
-
+// const Product = require("../database/");
+const Product=require('../database/sallerFunction')
 module.exports = {
   getAllcarts: async (req, res) => {
     const {id} = req.params
