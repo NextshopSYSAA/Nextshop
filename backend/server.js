@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const port = 3001 ;
+
+const port = 3001
+
 const Routermain = require("./router/routermain");
 const Routeruser = require("./router/routeruser");
 const RouterSaler = require("./router/routersaler");

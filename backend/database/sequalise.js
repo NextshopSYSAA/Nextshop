@@ -4,7 +4,9 @@ const database = process.env.DATABASE;
 const username = process.env.USERNAME;
 const pwd = process.env.PWD;
 
-const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
+
+const sequelize = new Sequelize("teaa", "root", "mars", {
+
   host: "localhost",
   dialect: "mysql",
 });
@@ -32,7 +34,9 @@ const Product = sequelize.define(
       type: DataTypes.INTEGER,
     },
   },
-  { freezeTableName: true, timestamps:false }
+
+  { freezeTableName: true, timestamps: false }
+
 );
 
 const ImgProduct = sequelize.define(
