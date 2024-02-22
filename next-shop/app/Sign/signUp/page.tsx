@@ -13,7 +13,7 @@ const Page = () => {
             <div className='flex flex-col' style={{width:'371px',height:'530px',gap:'48px',paddingTop:'80px'}}>
                 <div className='flex flex-col' style={{paddingBottom:'7px'}} >
                 <h3 className='text-2xl		'>Create an account</h3>
-                <h5 className='	text-xs	'>Create an account</h5>
+                <h5 className='	text-xs	'>Enter your details below</h5>
                 </div>
               <div className='flex flex-col' >
               <input style={{marginBottom: '15px', width: '300px',height: '32px',borderBottom: '2px solid #d3d3d3',}} placeholder='Email or phone number' type='text'/>
@@ -21,8 +21,7 @@ const Page = () => {
               <input  style={{marginBottom: '15px', width: '300px',height: '32px',borderBottom: '2px solid #d3d3d3',}} placeholder='Password' type="text" />
               <button
                  type="button"className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Create Account</button>
-              <button type="button" className="py-2.5 px-5 me-2 mb-2 text-xs font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><FcGoogle /> Sign up with Google</button>
-
+              <button type="button" className="py-2.5 px-5 me-2 mb-2 text-xs font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 align-items: center" style={{height:'40px' }}><FcGoogle className='align-items: center'/> Sign up with Google</button>
               <div className='flex flex-row space-x-6' >
               <h6 className='text-sm text-[#64748b] '>Already have account?</h6>
               <h6 className='text-sm'>log in </h6>
