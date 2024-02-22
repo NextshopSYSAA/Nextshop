@@ -5,7 +5,9 @@ const username = process.env.USERNAME;
 const pwd = process.env.PWD;
 
 
+
 const sequelize = new Sequelize("teaa", "root", "mars", {
+
 
   host: "localhost",
   dialect: "mysql",
