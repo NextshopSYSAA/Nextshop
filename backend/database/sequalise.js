@@ -4,7 +4,9 @@ const database = process.env.DATABASE;
 const username = process.env.USERNAME;
 const pwd = process.env.PWD;
 
+
 const sequelize = new Sequelize("teaa", "root", "mars", {
+
   host: "localhost",
   dialect: "mysql",
 });
@@ -32,7 +34,9 @@ const Product = sequelize.define(
       type: DataTypes.INTEGER,
     },
   },
+
   { freezeTableName: true, timestamps: false }
+
 );
 
 const ImgProduct = sequelize.define(
@@ -176,8 +180,14 @@ ImgProduct.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",
 });
+
 Product.hasMany(ImgProduct);
+
+
+User.hasMany(Panier)
 Panier.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
+
+Product.hasMany(Panier)
 Panier.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",
@@ -186,7 +196,11 @@ Panier.belongsTo(Product, {
 Product.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
 User.hasMany(Product, { foreignKey: "userIduser", onDelete: "CASCADE" });
 
+
+User.hasMany(Wishlist)
 Wishlist.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
+
+Product.hasMany(Wishlist)
 Wishlist.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",
@@ -202,7 +216,7 @@ Comment.belongsTo(User, {  onDelete: "CASCADE" });
 Comment.belongsTo(Product, {
   onDelete: "CASCADE",
 });
-sequelize.sync({ force: true });
+sequelize.sync({ alter: true });
 
 module.exports = {
   Product: Product,
