@@ -25,7 +25,6 @@ const Product = sequelize.define(
     promo: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    solde : DataTypes.INTEGER,
     userIduser: {
       foreignKey: true,
       allowNull: false,
@@ -202,7 +201,7 @@ Comment.belongsTo(User, {  onDelete: "CASCADE" });
 Comment.belongsTo(Product, {
   onDelete: "CASCADE",
 });
-sequelize.sync({ force: true });
+sequelize.sync({ alter: true });
 
 module.exports = {
   Product: Product,

@@ -4,6 +4,7 @@ const {checkToken} = require('../controller/authorization')
 
 
 Routeruser.get('/getusers',checkToken,controlleruser.GetAllUser)
+Routeruser.get('/getuser/:id',controlleruser.FindUserById)
 Routeruser.post('/signup',controlleruser.addAccount)
 Routeruser.post('/login',controlleruser.login)
 Routeruser.delete('/deleteuser/:iduser',controlleruser.DeleteUser)
