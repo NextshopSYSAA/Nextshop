@@ -29,7 +29,6 @@ const Product = sequelize.define(
     promo: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    solde : DataTypes.INTEGER,
     userIduser: {
       foreignKey: true,
       allowNull: false,

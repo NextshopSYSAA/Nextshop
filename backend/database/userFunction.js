@@ -7,6 +7,9 @@ const getalluser =()=>{
 const findUser = (email) => {
     return User.findOne({where:({email: email})})
 }
+const finduserbyid =(id)=>{
+    return User.findOne({where : ({iduser : id})})
+}
 const saveUser = (data) => {
   User.create(data)
 }
@@ -25,5 +28,6 @@ module.exports={
     findUser : findUser,
     saveUser : saveUser,
     deleteuser : deleteuser,
-    updateuser : updateuser
+    updateuser : updateuser,
+    finduserbyid :finduserbyid
 }

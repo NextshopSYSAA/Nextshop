@@ -15,6 +15,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements-react/dist/plugin.cjs")],
+  darkMode: "class",
+
 };
 export default config;
