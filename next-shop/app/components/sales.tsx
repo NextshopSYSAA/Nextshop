@@ -60,16 +60,16 @@ function Sales() {
                 </div>
               </div>
               <div className="left-[63px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
               </div>
               <div className="left-[143px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
               </div>
               <div className="left-[230px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
+                <div className="w-1 h-1 bg-red-200 rounded-full"></div>
               </div>
             </div>
           </div>

@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import Slide from "./Slide";
 
 const Hero = () => {
   return (
-    
-      <div style={{display:"flex" , flexDirection:"row"}}>
-
-      <div style={{marginTop:"3%" , marginLeft:"8.4%"}} className=" flex-col justify-start items-start gap-4 inline-flex">
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{ marginTop: "3%", marginLeft: "8.4%" }}
+        className=" flex-col justify-start items-start gap-4 inline-flex"
+      >
         <div className="justify-start items-start gap-[51px] inline-flex">
           <div className="text-center text-black text-base font-normal font-['Poppins'] leading-normal">
             Woman’s Fashion
@@ -40,9 +42,9 @@ const Hero = () => {
           Health &amp; Beauty
         </div>
       </div>
-      
+      <Slide />
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
