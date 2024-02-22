@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Nav from "./nav/page";
+import Edit from "./account/page";
 export default function Home() {
   return (
     <div>
-      <Nav/>
+      <Edit/>
     </div>
     
   );
