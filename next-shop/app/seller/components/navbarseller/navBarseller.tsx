@@ -30,10 +30,8 @@ const NavBar = () => {
 
          
             <li>
-              <Link href={'seller/addProduct'}><button className="text-red-500">Add Product</button></Link>
+              <Link href={'/seller/addProduct'}><button className="text-red-500">Add Product</button></Link>
             </li>
-          
-          
             <li>
               <Link href={'/seller/allProduct'}><button className="text-red-500">ALL Product</button></Link>
             </li>

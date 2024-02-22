@@ -2,10 +2,10 @@ import React from 'react';
 import Productseller from './allProduct/Productseller';
 import SellerCard from './components/SellerCard';
 import NewProduct from './components/NewProduct';
+import axios from 'axios';
 // import ThemeSwitcher from './components/ThemeSwitcher';
 
 const page = () => {
-
     return (
         <div>
         <div className="flex flex-col bg-white">

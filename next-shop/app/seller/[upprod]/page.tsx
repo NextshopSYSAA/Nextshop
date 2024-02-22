@@ -1,10 +1,29 @@
-"use client";
-import React, { useState } from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
-const Page = ({params }: { params : any}) => {
+const Page =  ({params }: { params : any}) => {
+  const id: number = parseInt(params.upprod, 10);
+  const [data, setData] = useState<React.MutableRefObject<Product | undefined>>({ current: undefined });
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result: any = await axios.get(`http://localhost:3001/saler/getproduct/${id}`);
+       setData({ current: result.data });
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+console.log(data.current,'dattttttttta');
   console.log(params.upprod ,'this id');
+
+ 
+  console.log(data);
   const route = useRouter();
   const [name, setName] = useState<string>("");
   const [Category, setCategory] = useState<string>("");
@@ -88,7 +107,7 @@ const Page = ({params }: { params : any}) => {
                   setName(ele.target.value);
                 }}
                 id="nameProduct"
-                placeholder="name product"
+                // placeholder={data.current.name}
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
               <div className="mb-5">

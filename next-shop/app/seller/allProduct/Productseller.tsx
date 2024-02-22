@@ -1,14 +1,17 @@
 'use client'
 import React from 'react';
 import {useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 const Productseller = async () => {
   // need to get the id from salah !
     const router = useRouter()
-    const result  = await fetch(`http://localhost:3001/saler/getallprod/${1}`)
+    const result  = await fetch(`http://localhost:3001/saler/getallprod/${1}` , {next : {revalidate : 10 }})
     const data : Product[]= await (result.json());
     console.log(data ,'ssss');
     const updateProductspecific = (id : number) =>{
+      console.log("test");
+      
       router.push(`/seller/${id}`)
     } 
     return (
@@ -103,14 +106,16 @@ const Productseller = async () => {
                             Delete
                           </button>
                           <div className="ml-6">
+                            <Link href={`/seller/${ele.idproduct}`}>
                           <button
-                            onClick={()=>{
-                                updateProductspecific(7)
-                            }}
-                            className=" text-red-500 hover:text-black"
-                          >
+                            // onClick={()=>{
+                            //   updateProductspecific(ele.idproduct)
+                            // }}
+                            // className=" text-red-500 hover:text-black"
+                            >
                             Edit
                           </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
