@@ -25,8 +25,26 @@ React.useEffect(() => {
     setProducts(data.map((product: Product) => ({ ...product, quantity: 1 })));
   }
 
+
   fetchData();
 }, []);
+  //yessine s work
+  const addtocart = async (productId: number) => {
+    const response = await fetch(`http://localhost:3001/panier/addtoCart/1/${productId}`, {
+      method: 'POST',
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+  const addtowishlist= async (productId: number) => {
+    const response = await fetch(`http://localhost:3001/wishlist/add/${productId}/1`, {
+      method: 'POST',
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+  
+  //
   return (
     <div style={{ display: "flex", marginTop: "10%", justifyContent: "center" }}>
       <div className=" flex-col justify-center items-center gap-10 inline-flex">
@@ -52,7 +70,9 @@ React.useEffect(() => {
           <div className="justify-start items-start gap-2 flex">
             <div className="w-[46px] h-[46px] relative">
               <div className="w-[46px] h-[46px] left-0 top-0 absolute bg-neutral-100 rounded-full"></div>
-              <div className="w-6 h-6 px-1 py-[5px] left-[11px] top-[11px] absolute justify-center items-center inline-flex"></div>
+              <div className="w-6 h-6 px-1 py-[5px] left-[11px] top-[11px] absolute justify-center items-center inline-flex">
+             
+              </div>
             </div>
             <div className="w-[46px] h-[46px] relative">
               <div className="w-[46px] h-[46px] left-0 top-0 absolute bg-neutral-100 rounded-full"></div>
@@ -72,15 +92,25 @@ React.useEffect(() => {
               </div>
             </div>
             <div className="w-[270px] h-[41px] left-0 top-[209px] absolute bg-black rounded-bl rounded-br"></div>
-            <div className="left-[87px] top-[217px] absolute text-white text-base font-medium font-['Poppins'] leading-normal">
-              Add To Cart
+            <div className="left-[87px] top-[217px] absolute text-white text-base font-medium font-['Poppins'] leading-normal"
+            
+            >
+             <button onClick={()=>{
+              addtocart(product.idproduct)
+              
+              
+            }}>Add to cart</button>
             </div>
             <div className="left-[224px] top-[12px] absolute flex-col justify-start items-start gap-2 inline-flex">
-              <div className="w-[34px] h-[34px] relative">
+              <div className="w-[34px] h-[34px] relative" onClick={()=>{
+                addtowishlist(product.idproduct)
+              }}>
                 <div className="w-[34px] h-[34px]  bg-white rounded-full flex justify-center items-center">
-                    <IoMdHeartEmpty />
+                    <IoMdHeartEmpty  />
                 </div>
-                <div className="w-6 h-6 px-1 py-[5px] left-[5px] top-[5px] absolute justify-center items-center inline-flex"></div>
+                <div className="w-6 h-6 px-1 py-[5px] left-[5px] top-[5px] absolute justify-center items-center inline-flex">
+              
+                </div>
               </div>
               <div className="w-[34px] h-[34px] relative">
                 <div className="w-[34px] h-[34px]  bg-white rounded-full flex justify-center items-center">
@@ -94,7 +124,7 @@ React.useEffect(() => {
             <div className="w-[190px] h-[180px] pt-10 pb-[39px] left-[40px] top-[15px] absolute justify-center items-center inline-flex">
               <img
                 className="w-[191px] h-[101px]"
-                // src={product.imgproducts[0].image}
+                src={product.imgproducts[0].image}
                 alt="Product Image"
 
                 />

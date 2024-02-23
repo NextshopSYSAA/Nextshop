@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 
+
 interface Product {
   idproduct: number;
   name: string;
@@ -13,6 +14,7 @@ interface Product {
 
 export default function Cart() {
   const [products, setProducts] = React.useState<Product[]>([]);
+
 console.log(products);
 
   React.useEffect(() => {
@@ -24,6 +26,8 @@ console.log(products);
 
     fetchData();
   }, []);
+
+
 
   function calculateSubtotal(product: Product): number {
     return product.initalprice * product.quantity;
@@ -41,17 +45,19 @@ console.log(products);
 
   return (
     <div className="max-w-6xl mx-auto p-8 rounded-md shadow-md flex flex-col">
-      <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
+      <h2 className="text-3xl font-bold mb-6 text-[#3066be]">Your Cart</h2>
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Product</th>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Price</th>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Quantity</th>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Subtotal</th>
-              <th className="px-20 py-3 text-left text-lg font-semibold text-gray-800">Actions</th>
+            <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Product</th>
+<th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Price</th>
+<th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Quantity</th>
+<th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Subtotal</th>
+
+<th className="px-20 py-3 text-left text-lg font-semibold text-gray-800">Actions</th>
+
             </tr>
           </thead>
           <tbody>
@@ -61,7 +67,7 @@ console.log(products);
                   <div className="flex items-center">
                     <img
                       className="w-20 h-20 mr-4 rounded-lg"
-                      src={product.imgproducts[0].image}
+                      src={product.imgproducts[0]?.image}
                       alt="Product Image"
                     />
                     <div>
@@ -108,7 +114,7 @@ console.log(products);
       </div>
 
       <div className="mt-4 mx-auto w-full md:w-1/2 border border-black rounded-md p-6">
-        <h3 className="text-xl font-bold mb-2 text-center">Cart Total</h3>
+        <h3 className="text-xl font-bold mb-2 text-center text-[#3066be]">Cart Total</h3>
         <div className="flex justify-between">
           <span className="text-lg font-semibold">Subtotal:</span>
           <span className="text-lg font-semibold">
@@ -117,7 +123,7 @@ console.log(products);
         </div>
         <div className="flex justify-between mt-2">
           <span className="text-lg font-semibold">Shipping:</span>
-          <span className="text-lg font-semibold">Free</span>
+          <span className="text-lg font-semibold text-[#3066be]">Free</span>
         </div>
         <div className="flex justify-between mt-2">
           <span className="text-lg font-semibold">Total:</span>
@@ -126,7 +132,7 @@ console.log(products);
           </span>
         </div>
         <div className="mt-4 flex justify-center">
-          <button className="bg-[#8D7B68] text-white px-14 py-3 rounded-md text-lg hover:bg-[#A4907C] focus:outline-none focus:bg-[#A4907C]">
+          <button className="bg-[#241C24] text-white px-14 py-3 rounded-md text-lg hover:bg-[#D0CFD0] focus:outline-none focus:bg-[#A4907C]">
             Checkout
           </button>
         </div>
