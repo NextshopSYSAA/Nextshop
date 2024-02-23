@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { ToastContainer , toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 const Form1 = () => {
   const route = useRouter()
   const [name , setName] = useState<string>('')
   const [Category ,setCategory] = useState<string>('')
-  const [rate , setRate] = useState<number>()
   const [Inital,setIntialPrice]=useState<number>()
   const [Quantity,setQuantity]=useState<number>()
   const [promo,setPromo] = useState<number>()
@@ -37,7 +36,6 @@ const Form1 = () => {
   };
 
 
-  const notifySuccess = () => toast.success("Product added successfully!");
     const addProduct =  async ()=> 
     {
       // need the id of the seller how add this product 
@@ -47,7 +45,6 @@ const Form1 = () => {
         await axios.post(`http://localhost:3001/saler/createprod/${1}`, {
           name: name,
           category: Category,
-          rate: rate,
           status: 'availabe',
           initalprice: Inital,
           promo:promo,
@@ -61,7 +58,7 @@ const Form1 = () => {
           image5 : images[3]
           }
         })
-        notifySuccess()
+        
         route.push('/seller')
       }
       catch(err){
@@ -70,8 +67,15 @@ const Form1 = () => {
       
     }
     return (
-        <>
-        <ToastContainer/>
+        
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            layout="position"
+  style={{ width: "100%" }}
+          >
+         
         <div className="mx-auto w-full max-w-[550px] bg-white ">
         <div className="">
           <label
@@ -108,23 +112,7 @@ const Form1 = () => {
             />
           </div>
         </div>
-        <div className="mb-5">
-          <label
-            // for="email"
-            className="mb-3 block text-base font-medium text-[#07074D]"
-          >
-            <span className="text-red-500">Rate</span> Product
-          </label>
-          <input
-           onChange={(ele)=>{
-            setRate(parseInt(ele.target.value))
-          }}
-            type="number"
-            placeholder="rate"
-            id='RateProduct'
-            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          />
-        </div>
+      
         <div className="mb-5">
           <label
             // for="email"
@@ -237,7 +225,8 @@ const Form1 = () => {
         </div>
       </div>
     </div>
-        </>
+    </motion.div>
+        
     );
 };
 

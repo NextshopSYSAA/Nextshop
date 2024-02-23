@@ -28,11 +28,9 @@ const getAllProduct = () => {
       'idproduct',
       'name',
       'category',
-      'rate',
       'status',
+      'promo',
       'initalprice',
-      'currentprice',
-      'imgurlmain',
       'quantity',
       'description',
     ],
@@ -81,11 +79,9 @@ const getProductWithImages = (id) => {
       'idproduct',
       'name',
       'category',
-      'rate',
       'status',
+      'promo',
       'initalprice',
-      'currentprice',
-      'imgurlmain',
       'quantity',
       'description',
     ],
@@ -118,6 +114,7 @@ const newProductsInStore = () =>{
   return  Product.findAll({
     order: [['createdAt', 'DESC']], // Order by creation time in descending order
     limit: 10, 
+    include :[ImgProduct]
   });
 } 
 
