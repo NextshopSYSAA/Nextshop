@@ -1,3 +1,4 @@
+import MyComponent from "../components/categories";
 import Categories from "../components/categories";
 import Hero from "../components/hero";
 import Nav from "../components/nav";
@@ -18,7 +19,7 @@ export default function HomeLayout({
         <Nav/>
         <Hero/>
         <Sales/>
-        <Categories/>  
+        <MyComponent/>  
         <Product/>
         <New/>
         <Over/>

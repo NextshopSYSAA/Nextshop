@@ -48,6 +48,7 @@ module.exports = {
       console.log(body);
       console.log(req.body, "request ");
 
+
         const results = await user.updateuser(id, body);
         res.status(201).json(results);
     } catch (err) {
@@ -96,7 +97,7 @@ login : async (req, res) => {
             if (isMatch) {
               const token = jwt.sign(
                 { email: validation.email, id: validation.iduser, firstname: validation.firstname ,role:validation.role},
-                secretKey
+                "5454321@fkhdfjhfdjhfd..."
               );
 
               res.status(200).send({
@@ -117,5 +118,14 @@ login : async (req, res) => {
       }
       
   },
+  FindUserById : async (req , res)=>{
+    try{
+      const result = await userFunction.finduserbyid(req.params.id)
+      res.status(200).send(result)
+    }
+    catch(err){
+      console.log('err in getting data ',err);
+    }
+  }
 
 };

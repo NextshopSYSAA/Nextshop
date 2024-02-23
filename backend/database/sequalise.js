@@ -9,6 +9,7 @@ const pwd = process.env.PWD;
 const sequelize = new Sequelize("teaa", "root", "root", {
 
 
+
   host: "localhost",
   dialect: "mysql",
 });
@@ -29,7 +30,6 @@ const Product = sequelize.define(
     promo: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    solde : DataTypes.INTEGER,
     userIduser: {
       foreignKey: true,
       allowNull: false,
@@ -74,7 +74,7 @@ const User = sequelize.define(
     lastname: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false },
     role: { type: DataTypes.STRING, allowNull: false },
-    phone: DataTypes.INTEGER,
+    phone: DataTypes.STRING,
     adress: { type: DataTypes.STRING, allowNull: false },
     pwd: { type: DataTypes.STRING, allowNull: false },
     image : {type:DataTypes.STRING,allowNull:false , defaultValue :"https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp"}

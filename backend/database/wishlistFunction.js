@@ -6,12 +6,19 @@ const {
 const { Product } = require("../database/sequalise.js");
 const { User } = require("../database/sequalise.js");
 //get all product from wishlist
-const getallwishlist = (id) => {
-  console.log(Product.findAll, "-----------");
-  return Wishlist.findAll({
-    where: { userIduser: id },
-    include: [{ model: Product, include: [ ImgProduct] }],
-  });
+const getallwishlist= async (id) => {
+ 
+  try {
+    console.log(Product.findAll);
+    const results = Product.findAll({
+    
+      include: [{ model: Wishlist, attributes: [], where: { userIduser: id } }, ImgProduct]
+    });
+    return results
+  }
+  catch (err) {
+    throw err;
+  }
 };
 
 const addtowishlist = (product) => {
