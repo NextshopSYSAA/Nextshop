@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import anime from 'animejs/lib/anime.es.js';
 
 interface Product {
   idproduct: number;
@@ -13,7 +14,6 @@ interface Product {
 
 export default function Cart() {
   const [products, setProducts] = React.useState<Product[]>([]);
-console.log(products);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -32,25 +32,40 @@ console.log(products);
   const handleDelete = (productIdproduct: number) => {
     fetch(`http://localhost:3001/panier/deletecart/1/${productIdproduct}`, {
       method: 'DELETE',
-    }).then((response) => {
-      
-      if (!response.ok) throw Error('Failed to delete');
-      setProducts((products) => products.filter((product) => product.idproduct !== productIdproduct));
-    }).catch((error) => console.log(error));
+    })
+      .then((response) => {
+        if (!response.ok) throw Error('Failed to delete');
+        setProducts((products) => products.filter((product) => product.idproduct !== productIdproduct));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const animateDeleteIcon = (button: HTMLElement, animate: boolean) => {
+    if (animate) {
+      anime({
+        targets: button,
+        rotate: '1turn',
+        duration: 300,
+        easing: 'easeInOutSine',
+        loop: false,
+      });
+    } else {
+      anime.set(button, { rotate: 0 });
+    }
   };
 
   return (
     <div className="max-w-6xl mx-auto p-8 rounded-md shadow-md flex flex-col">
-      <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
+      <h2 className="text-3xl font-bold mb-6 text-[#3066be]">Your Cart</h2>
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
             <tr>
               <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Product</th>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Price</th>
+              <th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Price</th>
               <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Quantity</th>
-              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Subtotal</th>
+              <th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Subtotal</th>
               <th className="px-20 py-3 text-left text-lg font-semibold text-gray-800">Actions</th>
             </tr>
           </thead>
@@ -61,7 +76,7 @@ console.log(products);
                   <div className="flex items-center">
                     <img
                       className="w-20 h-20 mr-4 rounded-lg"
-                      src={product.imgproducts[0].image}
+                      src={product.imgproducts[0]?.image}
                       alt="Product Image"
                     />
                     <div>
@@ -88,8 +103,14 @@ console.log(products);
                   />
                 </td>
                 <td className="border px-6 py-4 text-lg">{calculateSubtotal(product)} $</td>
-                <td className="border px-1 py-1 ">
-                  <button className="text-red-600 hover:text-red-800" onClick={() => handleDelete(product.idproduct)}>
+                <td className="border px-10 py-1">
+                  <button
+                    className="text-red-600 hover:text-red-800"
+                    onClick={() => handleDelete(product.idproduct)}
+                    onMouseEnter={(e) => animateDeleteIcon(e.currentTarget, true)}
+                    onMouseLeave={(e) => animateDeleteIcon(e.currentTarget, false)}
+                 
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-12 w-40"
@@ -108,7 +129,7 @@ console.log(products);
       </div>
 
       <div className="mt-4 mx-auto w-full md:w-1/2 border border-black rounded-md p-6">
-        <h3 className="text-xl font-bold mb-2 text-center">Cart Total</h3>
+        <h3 className="text-xl font-bold mb-2 text-center text-[#3066be]">Cart Total</h3>
         <div className="flex justify-between">
           <span className="text-lg font-semibold">Subtotal:</span>
           <span className="text-lg font-semibold">
@@ -117,7 +138,7 @@ console.log(products);
         </div>
         <div className="flex justify-between mt-2">
           <span className="text-lg font-semibold">Shipping:</span>
-          <span className="text-lg font-semibold">Free</span>
+          <span className="text-lg font-semibold text-[#3066be]">Free</span>
         </div>
         <div className="flex justify-between mt-2">
           <span className="text-lg font-semibold">Total:</span>
@@ -126,7 +147,7 @@ console.log(products);
           </span>
         </div>
         <div className="mt-4 flex justify-center">
-          <button className="bg-[#8D7B68] text-white px-14 py-3 rounded-md text-lg hover:bg-[#A4907C] focus:outline-none focus:bg-[#A4907C]">
+          <button className="bg-[#241C24] text-white px-14 py-3 rounded-md text-lg hover:bg-[#D0CFD0] focus:outline-none focus:bg-[#A4907C]">
             Checkout
           </button>
         </div>
