@@ -45,7 +45,7 @@ const Slide = ({images:Array}) => {
         onClick={handlePrevSlide}
         className="absolute left-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
       />
-      <div className="w-full h-full  bg-center bg-cover duration-500 flex overflow-hidden  m-auto">
+      <div className="w-full h-full  bg-center bg-cover duration-500 flex overflow-hidden rounded-lg m-auto">
         <Swipe
           onSwipeLeft={handleNextSlide}
           onSwipeRight={handlePrevSlide}
