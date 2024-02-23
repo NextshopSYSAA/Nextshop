@@ -15,9 +15,9 @@ function Categories() {
                <div className="flex-col justify-start items-start gap-5 inline-flex">
                   <div className="justify-start items-center gap-4 inline-flex">
                      <div className="w-5 h-10 flex-col justify-center items-center inline-flex">
-                        <div className="w-5 h-10 bg-red-900 rounded"></div>
+                        <div className="w-5 h-10 bg-neutral-100 rounded"></div>
                      </div>
-                     <div className="text-red-900 text-base font-semibold font-['Poppins'] leading-tight">Categories</div>
+                     <div className="text-neutral-100 text-base font-semibold font-['Poppins'] leading-tight">Categories</div>
                   </div>
                   <div className="text-black text-4xl font-semibold font-['Inter'] leading-[48px] tracking-wider">Browse By Category</div>
                </div>
@@ -57,7 +57,7 @@ function Categories() {
                   </div>
                   <div className="text-black text-base font-normal font-['Poppins'] leading-normal">SmartWatch</div>
                </div>
-               <div className="w-[170px] h-[145px] pl-[51px] pr-[52px] pt-[25px] pb-6 bg-red-900 rounded shadow flex-col justify-center items-center gap-4 inline-flex">
+               <div className="w-[170px] h-[145px] pl-[51px] pr-[52px] pt-[25px] pb-6 bg-neutral-100 rounded shadow flex-col justify-center items-center gap-4 inline-flex">
                   <div className="w-14 h-14 relative flex-col justify-center  flex">
                   <FaCamera />
                         
