@@ -64,7 +64,7 @@ export default function Wishlist() {
           </div>
         )}
         <img
-          className="w-full h-40 w-60 ml-40 object-cover rounded-t-lg"
+          className="w-full h-60 w-60  object-cover rounded-t-lg"
           src={product.imgproducts[0]?.image}
           alt="Product Image"
         />
