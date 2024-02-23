@@ -54,49 +54,44 @@ export default function Wishlist() {
   };
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4 border-b-4 border-blue-500 pb-2">Your Wishlist</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products.map((product: Product, index: number) => (
-          <div key={product.idproduct} className="bg-white rounded-lg shadow-md overflow-hidden flex relative">
-            <img
-              className="w-40 h-40 mr-4 rounded-lg"
-              src={product.imgproducts[0].image}
-              alt="Product Image"
-            />
-            <div className="flex-1">
-              <div className="relative">
-                <div className="absolute top-0 right-0 flex space-x-2">
-                  <button  className="p-2 rounded-full hover:bg-gray-200" onClick={()=>{
-                    handleDelete(product.idproduct)
-                  }}>
-                  <TrashIcon  />
-                  </button>
-                </div>
-                {product?.promo > 0 && (
-                  <div className="absolute top-0 left-40 bg-red-500 text-white px-2 py-1 rounded-md bg-[#3066be]">
-                    {product?.promo}% OFF
-                  </div>
-                )}
-              </div>
-              <br />
-              <div className="p-3">
-                <h2 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h2>
-                <p className="text-base text-gray-600 mb-2">{product.description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-col"> 
-                    <span className="text-lg text-gray-500 line-through mb-2">${product.initalprice}</span>
-                    <span className="text-lg text-[#3066be] font-semibold">${Math.floor(product.initalprice * (1 - product.promo / 100))}</span>
-                  </div>
-                  <button className="bg-[#d0cfd0] text-white px-3 py-2 rounded-md hover:bg-[#241c24] transition duration-300 text-sm absolute bottom-4 right-4"
-                  onClick={()=>{
-                    addToCart(product.idproduct)
-                  }}>Add to Cart</button>
-                </div>
-              </div>
-            </div>
+  <h1 className="text-3xl font-bold text-gray-800 mb-4 border-b-4 border-blue-500 pb-2">Your Wishlist</h1>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {products.map((product: Product, index: number) => (
+      <div key={product.idproduct} className="bg-white rounded-lg ring-1 ring-gray-300 overflow-hidden relative">
+        {product?.promo > 0 && (
+          <div className="bg-red-500 text-white px-2 py-1 rounded-t-md bg-[#3066be] absolute top-0 left-0">
+            {product?.promo}% OFF
           </div>
-        ))}
+        )}
+        <img
+          className="w-full h-40 w-60 ml-40 object-cover rounded-t-lg"
+          src={product.imgproducts[0]?.image}
+          alt="Product Image"
+        />
+        <div className="p-4 flex flex-col justify-center">
+          <button className="p-2 rounded-full hover:bg-gray-200 absolute top-2 right-2" onClick={() => {
+            handleDelete(product.idproduct)
+          }}>
+            <TrashIcon />
+          </button>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2 text-center">{product.name}</h2>
+          <p className="text-base text-gray-600 mb-4 text-center">{product.description}</p>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col">
+              <span className="text-lg text-gray-500 line-through mb-2">${product.initalprice}</span>
+              <span className="text-lg text-[#3066be] font-semibold">${Math.floor(product.initalprice * (1 - product?.promo / 100))}</span>
+            </div>
+            <button className="bg-[#d0cfd0] text-white px-3 py-2 rounded-md hover:bg-[#241c24] transition duration-300 text-sm"
+              onClick={() => {
+                addToCart(product.idproduct)
+              }}>Add to Cart</button>
+          </div>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
+  
   );
 }
