@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Nav from "./nav/page";
+import First from "./Home/page"
 export default function Home() {
   return (
     <div>
-      <Nav/>
+    <h1>the first page</h1>
+
     </div>
-    
   );
 }

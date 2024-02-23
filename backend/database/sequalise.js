@@ -4,7 +4,11 @@ const database = process.env.DATABASE;
 const username = process.env.USERNAME;
 const pwd = process.env.PWD;
 
-const sequelize = new Sequelize("teaa", "root", "rootroot123", {
+
+
+
+const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
+
   host: "localhost",
   dialect: "mysql",
 });
@@ -25,14 +29,15 @@ const Product = sequelize.define(
     promo: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    solde : DataTypes.INTEGER,
     userIduser: {
       foreignKey: true,
       allowNull: false,
       type: DataTypes.INTEGER,
     },
   },
-  { freezeTableName: true, timestamps: true }
+
+  { freezeTableName: true, timestamps: false }
+
 );
 
 const ImgProduct = sequelize.define(
@@ -176,8 +181,14 @@ ImgProduct.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",
 });
+
 Product.hasMany(ImgProduct);
+
+
+User.hasMany(Panier)
 Panier.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
+
+Product.hasMany(Panier)
 Panier.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",
@@ -186,7 +197,11 @@ Panier.belongsTo(Product, {
 Product.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
 User.hasMany(Product, { foreignKey: "userIduser", onDelete: "CASCADE" });
 
+
+User.hasMany(Wishlist)
 Wishlist.belongsTo(User, { foreignKey: "userIduser", onDelete: "CASCADE" });
+
+Product.hasMany(Wishlist)
 Wishlist.belongsTo(Product, {
   foreignKey: "productIdproduct",
   onDelete: "CASCADE",

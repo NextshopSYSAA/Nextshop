@@ -30,7 +30,7 @@ module.exports = {
 
   UpdateUser: async (req, res) => {
     const id = req.params.iduser;
-    const { firstname, lastname, email, role, phone, adress, pwd } = req.body;
+    const { firstname, lastname, email, role, phone, adress, pwd ,image } = req.body;
 
     try {
         const hashedPwd = await bcrypt.hash(pwd, 10);
@@ -41,7 +41,8 @@ module.exports = {
             role,
             phone,
             adress,
-            pwd: hashedPwd 
+            pwd: hashedPwd ,
+            image 
         };
 
         const results = await user.updateuser(id, body);
@@ -113,5 +114,14 @@ login : async (req, res) => {
       }
       
   },
+  FindUserById : async (req , res)=>{
+    try{
+      const result = await userFunction.finduserbyid(req.params.id)
+      res.status(200).send(result)
+    }
+    catch(err){
+      console.log('err in getting data ',err);
+    }
+  }
 
 };
