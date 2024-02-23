@@ -93,11 +93,3 @@ const YourComponent = () => {
 export default YourComponent;
 
 
-// <div className="w-1/2 p-1 md:p-2">
-//   <video controls={false}
-//     ref={videoRef}
-
-//     className="block h-full w-full rounded-lg object-cover object-center  "
-//     src="https://www.apple.com/105/media/us/iphone-15/2023/434c1226-dcdc-47be-ae28-6cb67a3a5a7c/anim/design/large_2x.mp4"
-//   ></video>
-// </div>

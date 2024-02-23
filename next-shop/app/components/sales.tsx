@@ -42,6 +42,7 @@ React.useEffect(() => {
     });
     const data = await response.json();
     console.log(data);
+    
   };
   
   //
@@ -83,7 +84,7 @@ React.useEffect(() => {
         <div className="w-[1308px] justify-start items-start gap-[30px] inline-flex">
           {/* the card of item */}
          {products.map((product:Product,index:number)=>(
-          // eslint-disable-next-line react/jsx-key
+           // eslint-disable-next-line react/jsx-key
           <div className="flex-col justify-start items-start gap-4 inline-flex">
           <div className="w-[270px] h-[250px] relative bg-neutral-100 rounded">
             <div className="px-3 py-1 left-[12px] top-[12px] absolute bg-red-500 rounded justify-center items-center gap-2.5 inline-flex">
@@ -126,6 +127,7 @@ React.useEffect(() => {
                 className="w-[191px] h-[101px]"
                 src={product.imgproducts[0].image}
                 alt="Product Image"
+               
 
                 />
             </div>
