@@ -114,6 +114,7 @@ const newProductsInStore = () =>{
   return  Product.findAll({
     order: [['createdAt', 'DESC']], // Order by creation time in descending order
     limit: 10, 
+    include :[ImgProduct]
   });
 } 
 

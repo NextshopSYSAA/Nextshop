@@ -5,11 +5,8 @@ module.exports={
         const obj = {
           name: req.body.name,
           category: req.body.category,
-          rate: req.body.rate,
           status: req.body.status,
           initalprice: req.body.initalprice,
-          currentprice: req.body.currentprice,
-          imgurlmain: req.body.imgurlmain,
           promo : req.body.promo,
           quantity: req.body.quantity,
           description: req.body.description,
@@ -39,28 +36,17 @@ module.exports={
         const obj = {
           name: req.body.name,
           category: req.body.category,
-          rate: req.body.rate,
           status: req.body.status,
           initalprice: req.body.initalprice,
           promo : req.body.promo,
           quantity: req.body.quantity,
           description: req.body.description,
-          image :[
-            req.body.image.image1,
-             req.body.image.image2,
-             req.body.image.image3,
-             req.body.image.image4,
-            req.body.image.image5   
-      ]
+         
         };
     
     
         try {
           await prod.updateProduct(obj, id);
-          for (let i = 0; i < obj.image.length; i++) {
-            const image = obj.image[i];
-            await prod.updateImgProduct(image, id, i + 1); 
-          }
           res.status(201).json('Updated');
         } catch (err) {
           console.log('Error in updating product', err);
@@ -129,7 +115,7 @@ module.exports={
         try{
             const results = await prod.getProductById(id)
             console.log(results);
-            res.status(200).json(results)
+            res.status(200).send(results[0])
         }
         catch(err){
             console.log('err in getting product',err);

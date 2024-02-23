@@ -11,6 +11,7 @@ interface Product {
     rate : number,
     intalPrice : number,
     Quantity : number,
+    promo : number,
     Descriptin: string,
     status : string,
     imgproducts: imgproducts[],
