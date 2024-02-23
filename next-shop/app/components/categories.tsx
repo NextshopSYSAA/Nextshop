@@ -23,7 +23,7 @@ const CustomCard = ({ icon, title }) => {
 
 const MyComponent = () => {
   return (
-    <div className='justify-center  gap-10 flex mt-12'>
+    <div className='justify-center  gap-16 flex mt-24'>
       <CustomCard icon={<IoPhonePortraitOutline />} title="Phones" />
       <CustomCard icon={<HiOutlineComputerDesktop />} title="Computers" />
       <CustomCard icon={<BsSmartwatch />} title="SmartWatch" />

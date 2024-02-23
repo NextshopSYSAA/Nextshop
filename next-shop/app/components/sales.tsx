@@ -47,20 +47,20 @@ React.useEffect(() => {
   
   //
   return (
-    <div style={{ display: "flex", marginTop: "10%", justifyContent: "center" }}>
-      <div className=" flex-col justify-center items-center gap-10 inline-flex">
+    <div style={{ display: "flex", marginTop: "5%", justifyContent: "center" }}>
+      <div className=" flex-col justify-start items-start gap-10 inline-flex">
         <div className="justify-center items-end gap-[470px] inline-flex">
           <div className="justify-start items-end gap-[87px] flex">
             <div className="h-[103px] flex-col justify-start items-start gap-6 inline-flex">
               <div className="justify-start items-center gap-4 inline-flex">
                 <div className="w-5 h-10 flex-col justify-center items-center inline-flex">
-                  <div className="w-5 h-10 bg-red-500 rounded"></div>
+                  <div className="w-5 h-10 bg-[#3066BE] rounded"></div>
                 </div>
-                <div className="text-red-500 text-base font-semibold font-['Poppins'] leading-tight">
+                <div className="text-[#3066BE] text-base font-semibold font-['Poppins'] leading-tight">
                   Today’s
                 </div>
               </div>
-              <div className="text-black text-4xl font-semibold font-['Inter'] leading-[48px] tracking-wider">
+              <div className="text-[#241C24] text-4xl font-semibold font-['Inter'] leading-[48px] tracking-wider">
                 Flash Sales
               </div>
             </div>
@@ -87,12 +87,12 @@ React.useEffect(() => {
            // eslint-disable-next-line react/jsx-key
           <div className="flex-col justify-start items-start gap-4 inline-flex">
           <div className="w-[270px] h-[250px] relative bg-neutral-100 rounded">
-            <div className="px-3 py-1 left-[12px] top-[12px] absolute bg-red-500 rounded justify-center items-center gap-2.5 inline-flex">
+            <div className="px-3 py-1 left-[12px] top-[12px] absolute bg-[#3066BE] rounded justify-center items-center gap-2.5 inline-flex">
               <div className="text-neutral-50 text-xs font-normal font-['Poppins'] leading-[18px]">
               {product.promo}%
               </div>
             </div>
-            <div className="w-[270px] h-[41px] left-0 top-[209px] absolute bg-black rounded-bl rounded-br"></div>
+            <div className="w-[270px] h-[41px] left-0 top-[209px] absolute bg-[#241C24] rounded-bl rounded-br"></div>
             <div className="left-[87px] top-[217px] absolute text-white text-base font-medium font-['Poppins'] leading-normal"
             
             >
@@ -133,21 +133,21 @@ React.useEffect(() => {
             </div>
           </div>
           <div className="flex-col justify-start items-start gap-2 flex">
-            <div className="text-black text-base font-medium font-['Poppins'] leading-normal">
+            <div className="text-[#241C24] text-base font-medium font-['Poppins'] leading-normal">
             {product.name}
                         </div>
             <div className="justify-start items-start gap-3 inline-flex">
-              <div className="text-red-500 text-base font-medium font-['Poppins'] leading-normal">
+              <div className="text-[#3066BE] text-base font-medium font-['Poppins'] leading-normal">
           
                 {product.initalprice-(product.initalprice*product.promo)/100}
               </div>
-              <div className="opacity-50 text-black text-base font-medium font-['Poppins'] line-through leading-normal">
+              <div className="opacity-50 text-[#241C24] text-base font-medium font-['Poppins'] line-through leading-normal">
                 {product.initalprice}
               </div>
             </div>
             <div className="justify-start items-start gap-2 inline-flex">
               <div className="justify-start items-start flex"><CiStar /> <CiStar /><CiStar /><CiStar /></div>
-              <div className="w-8 h-5 opacity-50 text-black text-sm font-semibold font-['Poppins'] leading-[21px]">
+              <div className="w-8 h-5 opacity-50 text-[#241C24] text-sm font-semibold font-['Poppins'] leading-[21px]">
                 (75)
               </div>
             </div>

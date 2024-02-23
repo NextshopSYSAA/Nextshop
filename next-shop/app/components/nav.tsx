@@ -1,10 +1,14 @@
 
 'use client'
+import Link from 'next/link'
 
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
+import { IoMdHeartEmpty } from "react-icons/io";
+import { IconContext } from "react-icons";
+import { CiStar } from "react-icons/ci";
+import { FaShoppingCart } from "react-icons/fa";
 
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ')
@@ -12,8 +16,8 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 function Nav() {
   return (
-    <>
-      <div style={{textAlign:"center"}} className="w-full h-12  pl-96 pr-[136px] py-3 bg-black justify-center items-center inline-flex">
+    <div style={{marginBottom:"2%" }}>
+      <div style={{textAlign:"center" }} className="w-full h-12  pl-96 pr-[136px] py-3 bg-black justify-center items-center inline-flex">
         <div className="justify-start items-start gap-[231px] inline-flex">
           <div className="justify-start items-center gap-2 flex">
             <div className="w-[474px] h-[18px]  text-neutral-50 text-sm font-normal font-['Poppins'] leading-[21px]">
@@ -40,14 +44,12 @@ function Nav() {
               Exclusive
             </div>
           </div>
-          <div className="justify-start items-start gap-12 flex">
-            <div className="flex-col justify-center items-center inline-flex">
-              <div className="text-center text-black text-base font-normal font-['Poppins'] leading-normal">
-               <a href='/'>Home</a> 
+          <div className="justify-start items-start gap-12 flex ">
+            <div className="flex-col justify-center items-center inline-flex hover:underline">
+              <div className="text-center text-black text-base font-normal font-['Poppins'] leading-normal ">
+               <Link href='Home/'>Home</Link> 
               </div>
-              <div className="w-12 h-[0px] opacity-50 justify-center items-center inline-flex">
-                <div className="w-12 h-[0px] border border-black"></div>
-              </div>
+             
             </div>
             <div className="w-[66px] h-6 justify-center items-center flex">
               <p className="text-center text-black text-base font-normal font-['Poppins'] leading-normal">
@@ -76,8 +78,8 @@ function Nav() {
             </div>
           </div>
           <div className="justify-center items-center gap-4 flex">
-            {/* <a href='/wishList'> <box-icon name='heart' ></box-icon> </a> */}
-            {/* <a href='/cart'>   <box-icon name='cart' ></box-icon></a> */}
+            <Link href='/wishlist'>  <IoMdHeartEmpty  /></Link>
+            <Link href='/cart'>  <FaShoppingCart /></Link>
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -89,7 +91,7 @@ function Nav() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

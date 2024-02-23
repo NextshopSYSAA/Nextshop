@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useEffect } from "react";
 
-const YourComponent = () => {
+const Group = () => {
   const videoRefs = [
     useRef(null),
     useRef(null),
@@ -31,7 +31,7 @@ const YourComponent = () => {
   }, [videoRefs]);
 
   return (
-    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
+    <div className="container mx-auto px-3 py-2 lg:px-2 lg:pt-10">
       <div className="-m-1 flex flex-wrap md:-m-2">
         <div className="flex w-1/2 flex-wrap">
           <div className="w-1/2 p-1 md:p-2">
@@ -90,6 +90,6 @@ const YourComponent = () => {
   );
 };
 
-export default YourComponent;
+export default Group;
 
 

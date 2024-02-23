@@ -6,7 +6,6 @@ import New from "../components/new";
 import Over from "../components/over";
 import Product from "../components/product";
 import Sales from "../components/sales";
-import YourComponent from "../components/video";
 
 
 export default function HomeLayout({
@@ -21,7 +20,6 @@ export default function HomeLayout({
         <Hero/>
         <Sales/>
         <MyComponent/>  
-        <YourComponent/>
         <Product/>
         <New/>
         <Over/>

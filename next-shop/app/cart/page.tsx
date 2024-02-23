@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-
+import anime from 'animejs/lib/anime.es.js';
 
 interface Product {
   idproduct: number;
@@ -15,8 +15,6 @@ interface Product {
 export default function Cart() {
   const [products, setProducts] = React.useState<Product[]>([]);
 
-console.log(products);
-
   React.useEffect(() => {
     async function fetchData() {
       const response = await fetch(`http://localhost:3001/panier/getAllcarts/1`);
@@ -27,8 +25,6 @@ console.log(products);
     fetchData();
   }, []);
 
-
-
   function calculateSubtotal(product: Product): number {
     return product.initalprice * product.quantity;
   }
@@ -36,11 +32,26 @@ console.log(products);
   const handleDelete = (productIdproduct: number) => {
     fetch(`http://localhost:3001/panier/deletecart/1/${productIdproduct}`, {
       method: 'DELETE',
-    }).then((response) => {
-      
-      if (!response.ok) throw Error('Failed to delete');
-      setProducts((products) => products.filter((product) => product.idproduct !== productIdproduct));
-    }).catch((error) => console.log(error));
+    })
+      .then((response) => {
+        if (!response.ok) throw Error('Failed to delete');
+        setProducts((products) => products.filter((product) => product.idproduct !== productIdproduct));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const animateDeleteIcon = (button: HTMLElement, animate: boolean) => {
+    if (animate) {
+      anime({
+        targets: button,
+        rotate: '1turn',
+        duration: 300,
+        easing: 'easeInOutSine',
+        loop: false,
+      });
+    } else {
+      anime.set(button, { rotate: 0 });
+    }
   };
 
   return (
@@ -51,13 +62,11 @@ console.log(products);
         <table className="w-full table-auto">
           <thead>
             <tr>
-            <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Product</th>
-<th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Price</th>
-<th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Quantity</th>
-<th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Subtotal</th>
-
-<th className="px-20 py-3 text-left text-lg font-semibold text-gray-800">Actions</th>
-
+              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Product</th>
+              <th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Price</th>
+              <th className="px-6 py-3 text-left text-lg font-semibold text-gray-800">Quantity</th>
+              <th className="px-6 py-3 text-left text-lg font-semibold text-[#3066be]">Subtotal</th>
+              <th className="px-20 py-3 text-left text-lg font-semibold text-gray-800">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -94,8 +103,14 @@ console.log(products);
                   />
                 </td>
                 <td className="border px-6 py-4 text-lg">{calculateSubtotal(product)} $</td>
-                <td className="border px-1 py-1 ">
-                  <button className="text-red-600 hover:text-red-800" onClick={() => handleDelete(product.idproduct)}>
+                <td className="border px-10 py-1">
+                  <button
+                    className="text-red-600 hover:text-red-800"
+                    onClick={() => handleDelete(product.idproduct)}
+                    onMouseEnter={(e) => animateDeleteIcon(e.currentTarget, true)}
+                    onMouseLeave={(e) => animateDeleteIcon(e.currentTarget, false)}
+                 
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-12 w-40"
