@@ -92,7 +92,7 @@ login : async (req, res) => {
             if (isMatch) {
               const token = jwt.sign(
                 { email: validation.email, id: validation.iduser, firstname: validation.firstname ,role:validation.role},
-                secretKey
+                "5454321@fkhdfjhfdjhfd..."
               );
 
               res.status(200).send({

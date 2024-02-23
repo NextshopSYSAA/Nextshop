@@ -68,7 +68,7 @@ const User = sequelize.define(
     lastname: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false },
     role: { type: DataTypes.STRING, allowNull: false },
-    phone: DataTypes.INTEGER,
+    phone: DataTypes.STRING,
     adress: { type: DataTypes.STRING, allowNull: false },
     pwd: { type: DataTypes.STRING, allowNull: false },
     image : {type:DataTypes.STRING,allowNull:false , defaultValue :"https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp"}
