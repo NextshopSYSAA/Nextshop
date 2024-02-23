@@ -95,10 +95,12 @@ const getProductWithImages = (id) => {
 };
 
 // insert img product
-const insertImgProduct = (data, productId) => {
-  return ImgProduct.create({ 
-    image : data.image
+const insertImgProduct = async (data, productId) => {
+  const results = await  ImgProduct.create({ 
+    image : data
     , productIdproduct: productId });
+
+    return 'done insert images !'
 };
 
 // update img product
@@ -108,7 +110,7 @@ const updateImgProduct = (data, productId) => {
 
 // get product to specific saler 
 const getallproductsaler = (id)=>{
-  return Product.findAll({where:{userIduser : id}})
+  return Product.findAll({where:{userIduser : id} , include : ImgProduct})
 }
 
 // get the 10 new product inserted 

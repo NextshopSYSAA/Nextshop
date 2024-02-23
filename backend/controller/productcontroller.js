@@ -10,20 +10,24 @@ module.exports={
           initalprice: req.body.initalprice,
           currentprice: req.body.currentprice,
           imgurlmain: req.body.imgurlmain,
+          promo : req.body.promo,
           quantity: req.body.quantity,
           description: req.body.description,
           userIduser : req.params.id,
-          image :{
-                image1 : req.body.image1,
-                image2 : req.body.image2,
-                image3 : req.body.image3,
-                image4 : req.body.image4
-          }
+          image :[
+                req.body.image.image1,
+                 req.body.image.image2,
+                 req.body.image.image3,
+                 req.body.image.image4,
+                req.body.image.image5   
+          ]
         };
     
         try {
           const createdProduct = await prod.insertProduct(obj);
-          await prod.insertImgProduct(req.body.image, createdProduct.idproduct);
+            for (const image of obj.image) {
+            await  prod.insertImgProduct(image, createdProduct.idproduct);
+            }
           res.status(200).send('Inserted');
         } catch (err) {
           console.log('Error in inserting product', err);
@@ -38,16 +42,25 @@ module.exports={
           rate: req.body.rate,
           status: req.body.status,
           initalprice: req.body.initalprice,
-          currentprice: req.body.currentprice,
-          imgurlmain: req.body.imgurlmain,
+          promo : req.body.promo,
           quantity: req.body.quantity,
           description: req.body.description,
+          image :[
+            req.body.image.image1,
+             req.body.image.image2,
+             req.body.image.image3,
+             req.body.image.image4,
+            req.body.image.image5   
+      ]
         };
     
     
         try {
           await prod.updateProduct(obj, id);
-          await prod.updateImgProduct(req.body.image, id);
+          for (let i = 0; i < obj.image.length; i++) {
+            const image = obj.image[i];
+            await prod.updateImgProduct(image, id, i + 1); 
+          }
           res.status(201).json('Updated');
         } catch (err) {
           console.log('Error in updating product', err);

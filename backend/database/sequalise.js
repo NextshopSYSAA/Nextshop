@@ -6,7 +6,7 @@ const pwd = process.env.PWD;
 
 
 
-const sequelize = new Sequelize("teaa", "root", "mars", {
+const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
 
 
   host: "localhost",
@@ -29,7 +29,6 @@ const Product = sequelize.define(
     promo: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    solde : DataTypes.INTEGER,
     userIduser: {
       foreignKey: true,
       allowNull: false,
