@@ -1,10 +1,17 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 const NewProduct = () => { 
   const [data,setData] = useState<Product[]>()
+  const [userid , setUserId] = useState()
+  const token : token = getCookies('token')
+  console.log("token" , token);
+  const dec  : dectoken = jwtDecode(token.token) 
+  console.log( 'ssss',dec);
   useEffect(()=>{ 
     
-  fetch(`http://localhost:3001/saler/getallprod/${1}`,{next : {revalidate : 2}})
+  fetch(`http://localhost:3001/saler/getallprod/${dec.id}`,{next : {revalidate : 2}})
     .then((result)=>result.json())
     .then((data)=>{
       console.log(data,'data new product');
@@ -36,34 +43,29 @@ const NewProduct = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-16 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-16 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Name
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                        Category /Description 
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Rate
                       </th>
-                      <th
-                        scope="col"
-                        className="px-8 py-6 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
-                      >
-                        Manging
-                      </th>
+                      
                       <th scope="col" className="relative px-6 py-3">
                         <span className="sr-only">Edit</span>
                       </th>
@@ -99,7 +101,7 @@ const NewProduct = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className="px-2 inline-flex text-xs leading-5
-                      font-semibold rounded-full bg-green-100 text-green-800"
+                      font-semibold rounded-full bg-green-100 text-blue-400"
                           >
                             {ele.status}
                           </span>
@@ -107,26 +109,7 @@ const NewProduct = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm ">
                           {/* {ele.rate} */}
                         </td>
-                        <td className=" flex px-6 py-4 whitespace-nowrap text-right text-sm  font-semibold">
-                          <button
-                            // onClick={()=>{
-                            //     deleteProductspecific(ele.idproduct)
-                            // }}
-                            className=" text-black-500 hover:text-red-400"
-                          >
-                            Delete
-                          </button>
-                          <div className="ml-6">
-                          <button
-                            // onClick={()=>{
-                            //     updateProductspecific(ele.idproduct)
-                            // }}
-                            className=" text-red-500 hover:text-black"
-                          >
-                            Edit
-                          </button>
-                          </div>
-                        </td>
+                       
                       </tr>
                     ))}
                   </tbody>

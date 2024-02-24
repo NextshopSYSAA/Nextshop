@@ -1,11 +1,18 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 const SellerCard = () => {
   const [data, setData] = useState({});
   const [prod,setProd] = useState({})
+  const [userid , setUserId] = useState()
+  const token : token = getCookies('token')
+  console.log("token" , token);
+  const dec  : dectoken = jwtDecode(token.token) 
+  console.log( 'ssss',dec);
   useEffect(() => {
-    fetch(`http://localhost:3001/user/getuser/${1}`, { next: { revalidate: 20 } })
+    fetch(`http://localhost:3001/user/getuser/${dec.id}`, { next: { revalidate: 20 } })
     .then((resultuser) => resultuser.json())
     .then((data) => {
       console.log(data, 'info user');
@@ -13,7 +20,7 @@ const SellerCard = () => {
     })
     .catch((error) => console.error(error));
 
-    fetch(`http://localhost:3001/saler/getallprod/${1}` , {next : {revalidate : 10}})
+    fetch(`http://localhost:3001/saler/getallprod/${dec.id}` , {next : {revalidate : 10}})
     .then((data)=>data.json())
     .then((prod)=>{
       console.log('prod',prod);
@@ -53,7 +60,7 @@ const SellerCard = () => {
             </a>
             <p className="mt-2 text-xl font-medium text-gray-800 ">{data.firstname}</p>
             <p className="mb-4 text-xs text-gray-400">{data.email}</p>
-            <p className="p-2 px-4 text-xs text-white bg-black rounded-full">seller</p>
+            <p className="p-2 px-4 text-xs text-white bg-blue-400 rounded-full">seller</p>
             <div className="w-full p-2 mt-4 rounded-lg">
               <div className="flex items-center justify-between text-sm text-gray-600">
                 <p className="flex flex-col">
