@@ -7,7 +7,7 @@ const pwd = process.env.PWD;
 
 
 
-const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
+const sequelize = new Sequelize("teaa", "root", "root", {
 
   host: "localhost",
   dialect: "mysql",
