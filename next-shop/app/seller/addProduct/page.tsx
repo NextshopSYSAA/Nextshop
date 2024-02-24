@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Form1 from "./Form1";
 import { motion } from "framer-motion";
+
+
 const page = () => {
+
+
   return (
     <div>
       <div className="h-full w-full">

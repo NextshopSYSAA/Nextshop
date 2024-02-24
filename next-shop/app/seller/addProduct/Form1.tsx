@@ -4,7 +4,16 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 // import Loading from "../Loading/Loading"
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
+
 const Form1 = () => {
+  const [userid , setUserId] = useState()
+  const token : token = getCookies('token')
+  console.log("token" , token);
+  const dec  : dectoken = jwtDecode(token.token) 
+  console.log( 'ssss',dec);
+  // setUserId(dec)
   const route = useRouter()
   const [name , setName] = useState<string>('')
   const [Category ,setCategory] = useState<string>('')
@@ -45,7 +54,7 @@ const Form1 = () => {
         setLoaded(true)
         const image = await uploadImage(photo[0]);
         const images = await Promise.all(photo.slice(1).map(uploadImage));
-        await axios.post(`http://localhost:3001/saler/createprod/${1}`, {
+        await axios.post(`http://localhost:3001/saler/createprod/${dec.id}`, {
           name: name,
           category: Category,
           status: 'availabe',

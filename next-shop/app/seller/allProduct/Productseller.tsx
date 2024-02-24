@@ -4,14 +4,21 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 
 const Productseller =  () => {
   // need to get the id from salah ! get all product inserted by that user 
     const router = useRouter()
+    const [userid , setUserId] = useState()
+    const token : token = getCookies('token')
+    console.log("token" , token);
+    const dec  : dectoken = jwtDecode(token.token) 
+    console.log( 'ssss',dec);
     const [data,setData] = useState<Product[]>()
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/saler/getallprod/${1}`, { next: { revalidate: 2 } });
+        const response = await fetch(`http://localhost:3001/saler/getallprod/${dec.id}`, { next: { revalidate: 2 } });
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
@@ -25,7 +32,7 @@ const Productseller =  () => {
     },[])
     const deleteprod = (id : any)=>{
     
-        axios.delete(`http://localhost:3001/saler/deleteprod/${id}`)
+        axios.delete(`http://localhost:3001/saler/deleteprod/${dec.id}`)
         .then(()=>{
           
           router.push('/seller')

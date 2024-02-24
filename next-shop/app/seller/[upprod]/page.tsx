@@ -19,6 +19,7 @@ const Page = ({ params }: { params: any }) => {
   }
   const id: number = parseInt(params.upprod, 10);
   const [data, setData] = useState<Productupdate>();
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,12 +43,12 @@ const Page = ({ params }: { params: any }) => {
 
   const route = useRouter();
 
-  const [name, setName] = useState<string>(data?.name);
-  const [Category, setCategory] = useState<string>(data?.category);
+  const [name, setName] = useState<string | undefined >(data?.name);
+  const [Category, setCategory] = useState<string | undefined>(data?.category);
   const [status, setstatus] = useState<any>(data?.status);
-  const [Inital, setIntialPrice] = useState<number>(data?.initalprice);
-  const [Quantity, setQuantity] = useState<number>(data?.quantity);
-  const [promo, setPromo] = useState<number>(data?.promo);
+  const [Inital, setIntialPrice] = useState<number | undefined>(data?.initalprice);
+  const [Quantity, setQuantity] = useState<number | undefined>(data?.quantity);
+  const [promo, setPromo] = useState<number | undefined>(data?.promo);
   const [description, setDescription] = useState<string>(
     data?.description || ""
   );
@@ -85,7 +86,7 @@ const Page = ({ params }: { params: any }) => {
         <div></div>
         <div className="w-full h-full  font-semibold mt-8 ">
           <p className="ml-36">
-            Welcome! <span className="text-red-500  ">MR Amine</span>
+            Welcome! <span className="text-blue-400  ">MR Amine</span>
           </p>
         </div>
 
@@ -98,7 +99,7 @@ const Page = ({ params }: { params: any }) => {
                   htmlFor="number"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Product</span> name
+                  <span className="text-blue-400">Product</span> name
                 </label>
                 <input
                   onChange={(ele) => {
@@ -113,7 +114,7 @@ const Page = ({ params }: { params: any }) => {
                     htmlFor="text"
                     className="mb-5 block text-base font-medium text-[#07074D]"
                   >
-                    <span className="text-red-500">Category</span> Product
+                    <span className="text-blue-400">Category</span> Product
                   </label>
                   <input
                     placeholder={data?.category}
@@ -132,7 +133,7 @@ const Page = ({ params }: { params: any }) => {
                   // for="email"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">status</span> Product
+                  <span className="text-blue-400">status</span> Product
                 </label>
                 <input
                   placeholder={data?.status}
@@ -148,11 +149,11 @@ const Page = ({ params }: { params: any }) => {
                   // for="email"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Inital</span> Price
+                  <span className="text-blue-400">Inital</span> Price
                 </label>
                 <input
                   type="number"
-                  placeholder={data?.initalprice}
+                  placeholder={toString(data?.initalprice)}
                   onChange={(ele) => {
                     setIntialPrice(parseInt(ele.target.value));
                   }}
@@ -165,10 +166,10 @@ const Page = ({ params }: { params: any }) => {
                   htmlFor="number"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Promo</span>
+                  <span className="text-blue-400">Promo</span>
                 </label>
                 <input
-                  placeholder={data?.promo}
+                  placeholder={ toString(data?.promo)}
                   onChange={(ele) => {
                     setPromo(parseInt(ele.target.value));
                   }}
@@ -182,10 +183,10 @@ const Page = ({ params }: { params: any }) => {
                     htmlFor="number"
                     className="mb-3 block text-base font-medium text-[#07074D]"
                   >
-                    <span className="text-red-500">Quantity</span>
+                    <span className="text-blue-400">Quantity</span>
                   </label>
                   <input
-                    placeholder={data?.quantity}
+                    placeholder={ toString(data?.quantity)}
                     onChange={(ele) => {
                       setQuantity(parseInt(ele.target.value));
                     }}
@@ -202,7 +203,7 @@ const Page = ({ params }: { params: any }) => {
                   htmlFor="email"
                   className="mb-4 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Description</span>
+                  <span className="text-blue-400">Description</span>
                 </label>
                 <input
                   placeholder={data?.description}
@@ -221,7 +222,7 @@ const Page = ({ params }: { params: any }) => {
                     onClick={() => {
                       updateProduct();
                     }}
-                    className="hover:shadow-div w-full rounded-md bg-rose-600 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                    className="hover:shadow-div w-full rounded-md bg-blue-400 py-3 px-8 text-center text-base font-semibold text-white outline-none"
                   >
                     Update
                   </button>
