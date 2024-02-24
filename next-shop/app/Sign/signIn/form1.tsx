@@ -65,6 +65,7 @@ const Form1 = () => {
         navigate('/Sign/aboutUs');
       } else if (decode.role === 'seller') {
         console.log('It is a seller');
+        navigate('/seller')
       } else if (decode.role === 'client') {
         console.log('It is a client');
       }

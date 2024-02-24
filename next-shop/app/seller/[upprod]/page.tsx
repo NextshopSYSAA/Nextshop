@@ -1,64 +1,72 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
-const Page = ({params }: { params : any}) => {
-  console.log(params.upprod ,'this id');
+import { motion } from "framer-motion";
+const Page = ({ params }: { params: any }) => {
+  interface Productupdate {
+    idproduct: number;
+    name: string;
+    category: string;
+    status: string;
+    initalprice: number;
+    promo: number;
+    quantity: number;
+    description: string;
+    userIduser: number;
+    imgproducts: imgproducts[];
+  }
+  const id: number = parseInt(params.upprod, 10);
+  const [data, setData] = useState<Productupdate>();
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get(
+          `http://localhost:3001/saler/getproduct/${id}`
+        );
+        console.log(result.data); // Access data property of the response
+        setData(result.data); // Set data using result.data
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(data, "dattttttttta");
+  console.log(params.upprod, "this id");
+
+  // console.log(data.name,'name');
+
   const route = useRouter();
-  const [name, setName] = useState<string>("");
-  const [Category, setCategory] = useState<string>("");
-  const [rate, setRate] = useState<number>();
-  const [Inital, setIntialPrice] = useState<number>();
-  const [Quantity, setQuantity] = useState<number>();
-  const [promo, setPromo] = useState<number>();
-  const [description, setDescription] = useState<string>();
-  const [photo, setPhoto] = useState<any>();
-  const [image, setImage] = useState<string>("image1");
 
-  const handleImageChange = (e: any) => {
-    const selectedImages = Array.from(e.target.files);
-    console.log(selectedImages);
-    setPhoto(selectedImages);
-  };
-  const uploadImage = async (image: string) => {
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", "AmineTessiku");
-
-    try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/du0wpkjrs/upload",
-        formData
-      );
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("Error uploading image to Cloudinary:", error);
-    }
-  };
+  const [name, setName] = useState<string | undefined >(data?.name);
+  const [Category, setCategory] = useState<string | undefined>(data?.category);
+  const [status, setstatus] = useState<any>(data?.status);
+  const [Inital, setIntialPrice] = useState<number | undefined>(data?.initalprice);
+  const [Quantity, setQuantity] = useState<number | undefined>(data?.quantity);
+  const [promo, setPromo] = useState<number | undefined>(data?.promo);
+  const [description, setDescription] = useState<string>(
+    data?.description || ""
+  );
+ 
 
   const notifySuccess = () => toast.success("Product added successfully!");
-  const addProduct = async () => {
+  const updateProduct = async () => {
     // need the id of the seller how add this product
     try {
-      const image = await uploadImage(photo[0]);
-      const images = await Promise.all(photo.slice(1).map(uploadImage));
-      await axios.post(`http://localhost:3001/saler/createprod/${1}`, {
-        name: name,
-        category: Category,
-        rate: rate,
-        status: "availabe",
-        initalprice: Inital,
-        promo: promo,
-        quantity: Quantity,
-        description: description,
-        image: {
-          image1: image,
-          image2: images[0],
-          image3: images[1],
-          image4: images[2],
-          image5: images[3],
-        },
+      await axios.put(`http://localhost:3001/saler/update/${params.upprod}`, {
+          name: name,
+          category:Category,
+          status: status,
+          initalprice: Inital ,
+          promo: promo,
+          quantity: Quantity,
+          description: description,
+          
       });
       notifySuccess();
       route.push("/seller");
@@ -67,185 +75,165 @@ const Page = ({params }: { params : any}) => {
     }
   };
   return (
-    <>
+    <div >
+         <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+         
       <div className="h-full w-full">
         <div></div>
         <div className="w-full h-full  font-semibold mt-8 ">
           <p className="ml-36">
-            Welcome! <span className="text-red-500  ">MR Amine</span>
+            Welcome! <span className="text-blue-400  ">MR Amine</span>
           </p>
-          <ToastContainer />
-          <div className="mx-auto w-full max-w-[550px] bg-white ">
-            <div className="">
-              <label
-                htmlFor="number"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                <span className="text-red-500">Product</span> name
-              </label>
-              <input
-                onChange={(ele) => {
-                  setName(ele.target.value);
-                }}
-                id="nameProduct"
-                placeholder="name product"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-              <div className="mb-5">
+        </div>
+
+        <div className="flex items-center justify-center p-12 text-center font-semibold ml-36 mt-3">
+          <>
+            <ToastContainer />
+            <div className="mx-auto w-full max-w-[550px] bg-white ">
+              <div className="">
                 <label
-                  htmlFor="text"
-                  className="mb-5 block text-base font-medium text-[#07074D]"
+                  htmlFor="number"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Category</span> Product
+                  <span className="text-blue-400">Product</span> name
                 </label>
                 <input
                   onChange={(ele) => {
-                    setCategory(ele.target.value);
+                    setName(ele.target.value);
                   }}
-                  type="text"
-                  name="text"
-                  id="CategoryProduct"
-                  placeholder="Category"
+                  id="nameProduct"
+                  placeholder={data?.name}
                   className="w-full  rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
+                <div className="mb-5">
+                  <label
+                    htmlFor="text"
+                    className="mb-5 block text-base font-medium text-[#07074D]"
+                  >
+                    <span className="text-blue-400">Category</span> Product
+                  </label>
+                  <input
+                    placeholder={data?.category}
+                    onChange={(ele) => {
+                      setCategory(ele.target.value);
+                    }}
+                    type="text"
+                    name="text"
+                    id="CategoryProduct"
+                    className="w-full  rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="mb-5">
-              <label
-                // for="email"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                <span className="text-red-500">Rate</span> Product
-              </label>
-              <input
-                onChange={(ele) => {
-                  setRate(parseInt(ele.target.value));
-                }}
-                type="number"
-                placeholder="rate"
-                id="RateProduct"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                // for="email"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                <span className="text-red-500">Inital</span> Price
-              </label>
-              <input
-                onChange={(ele) => {
-                  setIntialPrice(parseInt(ele.target.value));
-                }}
-                id="PriceProduct"
-                placeholder="Initial Price"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>{" "}
-            <div className="mb-5">
-              <label
-                htmlFor="number"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                <span className="text-red-500">Promo</span>
-              </label>
-              <input
-                onChange={(ele) => {
-                  setPromo(parseInt(ele.target.value));
-                }}
-                id="PriceProduct"
-                placeholder="Promo"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-            <div className="mb-5">
+              <div className="mb-5">
+                <label
+                  // for="email"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  <span className="text-blue-400">status</span> Product
+                </label>
+                <input
+                  placeholder={data?.status}
+                  onChange={(ele) => {
+                    setstatus(ele.target.value);
+                  }}
+                  type="text"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+              <div className="mb-5">
+                <label
+                  // for="email"
+                  className="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                  <span className="text-blue-400">Inital</span> Price
+                </label>
+                <input
+                  type="number"
+                  placeholder={toString(data?.initalprice)}
+                  onChange={(ele) => {
+                    setIntialPrice(parseInt(ele.target.value));
+                  }}
+                  id="PriceProduct"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>{" "}
               <div className="mb-5">
                 <label
                   htmlFor="number"
                   className="mb-3 block text-base font-medium text-[#07074D]"
                 >
-                  <span className="text-red-500">Quantity</span>
+                  <span className="text-blue-400">Promo</span>
                 </label>
                 <input
+                  placeholder={ toString(data?.promo)}
                   onChange={(ele) => {
-                    setQuantity(parseInt(ele.target.value));
+                    setPromo(parseInt(ele.target.value));
                   }}
-                  id="QuantityProduct"
-                  type="number"
-                  placeholder="Quantity"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  id="PriceProduct"
+                  className="w-full  rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
+              <div className="mb-5">
+                <div className="mb-5">
+                  <label
+                    htmlFor="number"
+                    className="mb-3 block text-base font-medium text-[#07074D]"
+                  >
+                    <span className="text-blue-400">Quantity</span>
+                  </label>
+                  <input
+                    placeholder={ toString(data?.quantity)}
+                    onChange={(ele) => {
+                      setQuantity(parseInt(ele.target.value));
+                    }}
+                    id="QuantityProduct"
+                    type="number"
+                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="mx-auto w-full max-w-[550px] bg-white ">
-            <div className="mb-5">
-              <label
-                htmlFor="email"
-                className="mb-4 block text-base font-medium text-[#07074D]"
-              >
-                <span className="text-red-500">Description</span>
-              </label>
-              <input
-                onChange={(ele) => {
-                  setDescription(ele.target.value);
-                }}
-                id="DsecriptionProduct"
-                type="text"
-                placeholder="Description"
-                className="w-full h-40  text-center rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-
-            <div className="mb-6 pt-4">
-              <label className="mb-5 block text-xl font-semibold text-[#07074D]">
-                Upload File
-              </label>
-
-              <div className="mb-8">
-                <input
-                  type="file"
-                  name="file"
-                  id="file"
-                  className="sr-only"
-                  multiple
-                  onChange={handleImageChange}
-                />
-
+            <div className="mx-auto w-full max-w-[550px] bg-white ">
+              <div className="mb-5">
                 <label
-                  htmlFor="file"
-                  className="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+                  htmlFor="email"
+                  className="mb-4 block text-base font-medium text-[#07074D]"
                 >
-                  <div>
-                    <span className="mb-2 block text-xl font-semibold text-[#07074D]">
-                      Drop files here
-                    </span>
-                    <span className="mb-2 block text-base font-medium text-[#6B7280]">
-                      Or
-                    </span>
-                    <span className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
-                      Browse
-                    </span>
-                  </div>
+                  <span className="text-blue-400">Description</span>
                 </label>
+                <input
+                  placeholder={data?.description}
+                  onChange={(ele) => {
+                    setDescription(ele.target.value);
+                  }}
+                  id="DsecriptionProduct"
+                  type="text"
+                  className="w-full h-40  text-center rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
               </div>
 
-              <div>
-                <button
-                  onClick={() => {
-                    addProduct();
-                  }}
-                  className="hover:shadow-div w-full rounded-md bg-rose-600 py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                >
-                  Add The New Product
-                </button>
+              <div className="mb-6 pt-4">
+                <div>
+                  <button
+                    onClick={() => {
+                      updateProduct();
+                    }}
+                    className="hover:shadow-div w-full rounded-md bg-blue-400 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         </div>
       </div>
-    </>
+      </motion.div>
+    </div>
   );
 };
 

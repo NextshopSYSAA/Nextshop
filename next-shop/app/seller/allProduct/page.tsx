@@ -1,13 +1,14 @@
 import React from 'react';
 import Productseller from './Productseller';
+import {motion} from "framer-motion"
 // import ChartBar from '../components/ChartBar';
 
 const page = () => {
     return (
-        <div>
-            <h3>hello </h3>
+        <div className='h-screen'>
+           
             <Productseller/>
-            {/* <ChartBar/> */}
+   
         </div>
     );
 };
