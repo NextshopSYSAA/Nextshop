@@ -24,8 +24,6 @@ React.useEffect(() => {
     const data = await response.json();
     setProducts(data.map((product: Product) => ({ ...product, quantity: 1 })));
   }
-
-
   fetchData();
 }, []);
   //yessine s work
