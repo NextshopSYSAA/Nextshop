@@ -9,13 +9,19 @@ import React, {
 } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
-import { CiSearch } from "react-icons/ci";
+import { BiSearch } from "react-icons/bi";
 import { RxAvatar } from "react-icons/rx";
+import { deleteCookie } from 'cookies-next';
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 // import Productseller from '../../allProduct/Productseller';
 // import NewProduct from '../NewProduct';
 
 const NavBar = () => {
+  const router = useRouter()
+  const navigate=(path:string)=>{
+    router.push(path)
+    }
   return (
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
@@ -33,50 +39,50 @@ const NavBar = () => {
             <motion.circle cx={500} animate={{ cx: [null, 100] }} />
             <li>
               <Link href={"/seller"}>
-                <button className="text-red-500">My Zone</button>
+                <button className="text-blue-600 ">My Zone</button>
               </Link>
             </li>
             <motion.circle/>
             <motion.circle cx={500} animate={{ cx: [null, 100] }} />
             <li>
               <Link href={"/seller/addProduct"}>
-                <button className="text-red-500">Add Product</button>
+                <button className="text-blue-600 ">Add Product</button>
               </Link>
             </li>
             <motion.circle/>
             <motion.circle cx={500} animate={{ cx: [null, 100] }} />
             <li>
               <Link href={"/seller/allProduct"}>
-                <button className="text-red-500">ALL Product</button>
+                <button className="text-blue-600 ">ALL Product</button>
               </Link>
             </li>
             <motion.circle/>
             <motion.circle cx={500} animate={{ cx: [null, 100] }} />
             <li>
-              <button>Log out</button>
+              <button onClick={()=>{
+                deleteCookie('token')
+                navigate('/Sign/signIn')
+              }}>Log out</button>
             </li>
             <motion.circle/>
           </ul>
       </div>
       <div className="flex justify-between items-center w-[395px]">
-        <div className="search-box w-[243px] flex justify-between items-center bg-[#f5f5f5] p-4">
+        <div className="search-box w-[243px] flex justify-between items-center bg-blue-400 rounded-full p-4">
           <input
-            className="w-[153px] bg-[#f5f5f5] text-xs    "
+            className="w-[153px]  bg-blue-400 text-xs    "
             type="text"
             // onChange={(e)=>{
               //   setSearch(e.target.value);
               // }}
               />
-          <CiSearch />
+          <BiSearch color="white" />
         </div>
         <button>
-          <FaHeart />
+          <FaHeart  size="30PX" color="#3066BE"/>
         </button>
         <button>
-          <FaCcMastercard className="w-14" />
-        </button>
-        <button>
-          <RxAvatar />
+          <FaCcMastercard className="w-14" color="#3066BE" size="1,2rem" />
         </button>
       </div>
     </div>

@@ -42,7 +42,7 @@ const Productseller =  () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
         <div >
-          <div className="flex flex-col  ">
+          <div className="flex flex-col mt-4 ">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 ">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -51,31 +51,31 @@ const Productseller =  () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-28 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-28 py-3 text-left text-xs  font-semibold text-blue-600  uppercase tracking-wider"
                       >
                         Name
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-600  uppercase tracking-wider"
                       >
                        Category /Description 
                       </th>
                       <th
                         scope="col"
-                        className="px-10 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-10 py-3 text-left text-xs  font-semibold text-blue-600  uppercase tracking-wider"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-600 uppercase tracking-wider"
                       >
                         Rate
                       </th>
                       <th
                         scope="col"
-                        className="px-8 py-6 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-8 py-6 text-left text-xs  font-semibold text-blue-600  uppercase tracking-wider"
                       >
                         Manging
                       </th>
@@ -98,14 +98,14 @@ const Productseller =  () => {
                               />
                             </div>
                             <div className="ml-4">
-                              <div className="text-sm  font-semibold text-gray-900">
+                              <div className="text-sm  font-semibold text-trueGray-300">
                                 {ele.name}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
+                          <div className="text-sm text-trueGray-300">
                             {ele.category}
                           </div>
                           <div className="text-sm ">sddd</div>
@@ -113,7 +113,7 @@ const Productseller =  () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className="px-6 inline-flex text-xs leading-5
-                      font-semibold rounded-full bg-green-100 text-green-800"
+                      font-semibold rounded-full bg-blue-400 text-trueGray-300"
                           >
                             {ele.status}
                           </span>
@@ -127,11 +127,11 @@ const Productseller =  () => {
                                   deleteprod(ele.idproduct)
                               } 
                             }
-                            className=" text-black-500 hover:text-red-400"
+                            className=" text-black-500 hover:text-blue-600"
                           >
                             Delete
                           </button>
-                          <div className="ml-6">
+                          <div className="px-6 py-4 whitespace-nowrap text-sm  hover:text-blue-600 ">
                             <Link href={`/seller/${ele.idproduct}`}>
                           <button>
                             Edit

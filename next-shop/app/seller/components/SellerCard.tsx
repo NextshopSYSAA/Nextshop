@@ -53,7 +53,7 @@ const SellerCard = () => {
             </a>
             <p className="mt-2 text-xl font-medium text-gray-800 ">{data.firstname}</p>
             <p className="mb-4 text-xs text-gray-400">{data.email}</p>
-            <p className="p-2 px-4 text-xs text-white bg-black rounded-full">seller</p>
+            <p className="p-2 px-4 text-xs text-white bg-blue-400 rounded-full">seller</p>
             <div className="w-full p-2 mt-4 rounded-lg">
               <div className="flex items-center justify-between text-sm text-gray-600">
                 <p className="flex flex-col">

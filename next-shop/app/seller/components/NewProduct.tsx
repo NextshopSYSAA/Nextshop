@@ -36,31 +36,31 @@ const NewProduct = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-16 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-16 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Name
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                        Category /Description 
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-7 py-3 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-7 py-3 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Rate
                       </th>
                       <th
                         scope="col"
-                        className="px-8 py-6 text-left text-xs  font-semibold text-red-500 uppercase tracking-wider"
+                        className="px-8 py-6 text-left text-xs  font-semibold text-blue-400 uppercase tracking-wider"
                       >
                         Manging
                       </th>
@@ -121,7 +121,7 @@ const NewProduct = () => {
                             // onClick={()=>{
                             //     updateProductspecific(ele.idproduct)
                             // }}
-                            className=" text-red-500 hover:text-black"
+                            className=" text-blue-400 hover:text-black"
                           >
                             Edit
                           </button>

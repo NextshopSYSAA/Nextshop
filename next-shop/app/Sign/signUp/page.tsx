@@ -8,12 +8,7 @@ const Page = () => {
     <div className='bg-white'>
       <div>
       <Form1/>
-
-        </div>
-
-
-
-
+      </div>
     </div>
   )
 }
