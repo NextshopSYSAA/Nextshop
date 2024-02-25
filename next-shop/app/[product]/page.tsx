@@ -85,7 +85,7 @@ const addtowishlist= async (id: number) => {
 //
 
   return (
-    <div className="flex w-full h-[600px] justify-center items-center">
+    <div className="flex w-full h-[600px]  flex-row items-center">
       <div className="w-1/3 h-[450px] ml-4">
         <div className="flex justify-center items-center w-1/2  mt-12">
           <div className="flex flex-col justify-between  mt-4 w-1/6">
@@ -323,47 +323,5 @@ const addtowishlist= async (id: number) => {
 export default Detailsproduct;
 
 {
-  /* //  // const addwishlist = async () => {
-  //     const ob={
-    //       user_iduser:id1,
-  //       product_idproduct:1
-  //     }
-  //     if (wish === false) {
-  //      await axios.post(`http://localhost:8000/cart/addwhis`,ob).then(() => {
-  //     }).catch((err)=>console.log(err))
-  //     }
-  //     else {
-  //     await axios.delete(`http://localhost:8000/cart/delwhis`,{ data: ob }).then(() => {
-  //     }).catch((err)=>console.log(err))
-  //     }
-  //     setWish((prev) => !prev);
-  //   };
-  //   const add = async () => {
-  //     try {
-  //       const cartt = await axios.get(`http://localhost:8000/cart/getcart/${id1}`);
-  //       if (cartt.data.length > 0) {
-  //         const objj = {
-  //           quantitycp: count,
-  //           cart_idcart: cartt.data[0].idcart,
-  //           product_idproduct:id2,
-  //         };
-  //         await axios.post("http://localhost:8000/cart/carthasp", objj);
-  //       } else {
-  //         const obj = {
-  //           status: "encours",
-  //           user_iduser: id1,
-  //         };
-  //         const xt = await axios.post("http://localhost:8000/cart/createcart", obj);
-  //         console.log(xt.data);
-  //         const ob = {
-  //           quantitycp: count,
-  //           cart_idcart: xt.data.idcart,
-  //           product_idproduct: id2,
-  //         };
-  //         await axios.post("http://localhost:8000/cart/carthasp", ob);
-  //       }
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }; */
+
 }
