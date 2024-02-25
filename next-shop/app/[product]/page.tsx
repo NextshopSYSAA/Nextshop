@@ -17,7 +17,11 @@ interface Product {
   promo: number;
 }
 
-const Detailsproduct = () => {
+const Detailsproduct = ({ params }: { params: any }) => {
+  const id: number = parseInt(params.product);
+  console.log(params.product)
+  console.log(id)
+
   const [count, setCount] = useState(1);
   const [size, setSize] = useState<string>("M"); // Ensure state type
   const [product, setProduct] = useState<Product>(); // Initial null state
@@ -27,7 +31,7 @@ const Detailsproduct = () => {
     const aymen = async () => {
       try {
         const respponse = await fetch(
-          `http://localhost:3001/saler/getproduct/1`
+          `http://localhost:3001/saler/getproduct/${id}`
         )
           .then((result) => result.json())
           .then((data) => {
@@ -41,17 +45,11 @@ const Detailsproduct = () => {
     };
     aymen();
   }, []);
-  // const swap = (index) => {
-  //       if (index !== 0) {
-  //         const cl = images[index];
-  //         const newimg = [...images];
-  //         newimg[index] = newimg[0];
-  //         newimg[0] = cl;
-  //         setImages(newimg);
-  //       }
-  //     };
+
   console.log(product?.imgproducts[2].image);
-  console.log(photo);
+  console.log(photo[0]);
+  const firstimg =photo[0]?.image
+  console.log(firstimg)
   const swap = (index) => {
     if (index !== 0) {
       const cl = photo[index];
@@ -83,7 +81,7 @@ const Detailsproduct = () => {
           <div className="w-full h-full rounded-md">
             <div className=" w-4/5   bg-center">
               <img
-                src={photo[0]}
+                src={firstimg}
                 className=" w-full h-full  hover:scale-105 mt-4 hover:mr-4 ml-5"
                 alt=""
               />
