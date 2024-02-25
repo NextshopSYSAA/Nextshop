@@ -1,5 +1,17 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
+
+
+require("dotenv").config();
+const database = process.env.DATABASE;
+const username = process.env.USERNAME;
+const pwd = process.env.PWD;
+
+
+
+const sequelize = new Sequelize("teaa", "root", "mars", {
+
+
+
 
 
   host: "localhost",
@@ -29,7 +41,7 @@ const Product = sequelize.define(
     },
   },
 
-  { freezeTableName: true, timestamps: true }
+  { freezeTableName: true, timestamps: false }
 
 );
 

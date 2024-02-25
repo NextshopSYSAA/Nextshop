@@ -20,7 +20,12 @@ const deleteuser=(id)=>{
 }
 const updateuser=(id,body)=>{
     return User.update(body,{where:{iduser:id}})
+    
 
+}
+
+const getone=(id)=>{
+    return User.findOne({where:{iduser:id}})
 }
 
 module.exports={
@@ -29,5 +34,6 @@ module.exports={
     saveUser : saveUser,
     deleteuser : deleteuser,
     updateuser : updateuser,
-    finduserbyid :finduserbyid
+    finduserbyid :finduserbyid,
+    getone:getone
 }
