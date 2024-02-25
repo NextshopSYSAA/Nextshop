@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { getCookies } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
-
+import { getPathMatch } from "next/dist/shared/lib/router/utils/path-match";
 
 
 interface Product {
@@ -27,8 +27,8 @@ function Sales() {
     router.push(path);
   };
   const [products, setProducts] = React.useState<Product[]>([]);
-  // const token = getCookies('token');
-  // const decodedToken = jwtDecode(token.token);
+  const token : token = getCookies('token')
+  const dec  : dectoken = jwtDecode(token.token) 
 
 console.log(products);
 React.useEffect(() => {
@@ -43,14 +43,14 @@ React.useEffect(() => {
 }, []);
   //yessine s work
   const addtocart = async (productId: number) => {
-    const response = await fetch(`http://localhost:3001/panier/addtoCart/${decodedToken.id}/${productId}`, {
+    const response = await fetch(`http://localhost:3001/panier/addtoCart/${dec.id}/${productId}`, {
       method: 'POST',
     });
     const data = await response.json();
     console.log(data);
   };
   const addtowishlist= async (productId: number) => {
-    const response = await fetch(`http://localhost:3001/wishlist/add/${productId}/${decodedToken.id}`, {
+    const response = await fetch(`http://localhost:3001/wishlist/add/${productId}/${dec.id}`, {
       method: 'POST',
     });
 
