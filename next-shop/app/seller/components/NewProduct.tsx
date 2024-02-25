@@ -73,8 +73,8 @@ const NewProduct = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200  font-semibold">
-                    {data?.map((ele) => (
-                      <tr >
+                    {data?.map((ele , inedx) => (
+                      <tr key={ele.idproduct}>
                         <td className="px-16 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 h-10 w-10">
