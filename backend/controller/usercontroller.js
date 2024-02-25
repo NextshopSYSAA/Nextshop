@@ -126,6 +126,37 @@ login : async (req, res) => {
     catch(err){
       console.log('err in getting data ',err);
     }
+  },
+  updateUser1:async(req,res)=>{
+    const { firstname, lastname, role, phone } = req.body;
+    try {
+      const values = {
+        firstname,
+        lastname,
+        role,
+        phone
+      };
+  
+      const results = await user.updateuser(req.params.id, values);
+      if (results !== null) { 
+        res.status(409).send("User with the same email or name already exists");
+      } else {
+        res.status(200).send("created");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  getUserById:async(req,res)=>{
+    try{
+      let d=await user.getone(req.params.id)
+      if(d) return res.status(200).json(d)
+      return res.status(404).json('err')
+    }catch(err){
+      res.status(500).json('internal err')
+    }
   }
 
-};
+}
+
+
