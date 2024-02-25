@@ -27,8 +27,8 @@ function Sales() {
     router.push(path);
   };
   const [products, setProducts] = React.useState<Product[]>([]);
-  const token = getCookies('token');
-  const decodedToken = jwtDecode(token.token);
+  // const token = getCookies('token');
+  // const decodedToken = jwtDecode(token.token);
 
 console.log(products);
 React.useEffect(() => {
@@ -92,7 +92,7 @@ React.useEffect(() => {
             </div>
           </div>
         </div>
-        <div className="w-[1308px] justify-start items-start gap-[30px] inline-flex">
+        <div className="w-[1308px] justify-start items-start gap-[30px] inline-flex overflow-x-scroll">
           {/* the card of item */}
           {products.map((product: Product, index: number) => (
             // eslint-disable-next-line react/jsx-key
