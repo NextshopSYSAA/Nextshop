@@ -8,7 +8,7 @@ const pwd = process.env.PWD;
 
 
 
-const sequelize = new Sequelize("teaa", "root", "mars", {
+const sequelize = new Sequelize("teaa", "yessine", "yessine147", {
 
 
 

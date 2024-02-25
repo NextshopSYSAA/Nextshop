@@ -8,6 +8,9 @@ import { FiHeart, FiRefreshCcw } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FaTruck } from "react-icons/fa";
 
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
+
 interface Product {
   idproduct: number;
   name: string;
@@ -27,6 +30,9 @@ const Detailsproduct = ({ params }: { params: any }) => {
   const [product, setProduct] = useState<Product>(); // Initial null state
   const [wish, setWish] = useState(false);
   const [photo, setPhoto] = useState<imgproducts[]>([]);
+  const token : token = getCookies('token')
+  const dec  : dectoken = jwtDecode(token.token) 
+
   useEffect(() => {
     const aymen = async () => {
       try {
@@ -59,6 +65,24 @@ const Detailsproduct = ({ params }: { params: any }) => {
       setPhoto(newimg);
     }
   };
+
+//yessine s work
+const addtocart = async (id: number) => {
+  const response = await fetch(`http://localhost:3001/panier/addtoCart/${dec.id}/${id}`, {
+    method: 'POST',
+  });
+  const data = await response.json();
+  console.log(data);
+};
+const addtowishlist= async (id: number) => {
+  const response = await fetch(`http://localhost:3001/wishlist/add/${id}/${dec.id}`, {
+    method: 'POST',
+  });
+
+  const data = await response.json();
+  console.log(data);
+};
+//
 
   return (
     <div className="flex w-full h-[600px] justify-center items-center">
@@ -230,6 +254,7 @@ const Detailsproduct = ({ params }: { params: any }) => {
                   onClick={() => {
                     //   add();
                     //   navigate(`/${id1}`)
+                    addtocart(id)
                   }}
                 >
                   Buy Now
@@ -240,9 +265,13 @@ const Detailsproduct = ({ params }: { params: any }) => {
             <FiHeart className={wish ? "text-[#3066BE] w-28  h-8" : "text-black w-28  h-8"} />
           </button> */}
             <IoMdHeartEmpty
+            onClick={()=>{
+              addtowishlist(id)
+            }}
               className={
                 wish ? "text-[#3066BE] w-28  h-8" : "text-black w-28  h-8"
               }
+            
             />
           </div>
         </div>
