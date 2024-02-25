@@ -7,7 +7,11 @@ import ProductCountdown from "./time/CountdownTimer";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { getPathMatch } from "next/dist/shared/lib/router/utils/path-match";
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
+
+
+
 interface Product {
   idproduct: number;
   name: string;
@@ -23,35 +27,33 @@ function Sales() {
     router.push(path);
   };
   const [products, setProducts] = React.useState<Product[]>([]);
-  console.log(products);
-  React.useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`http://localhost:3001/saler/getallprod`);
-      const data = await response.json();
-      setProducts(
-        data.map((product: Product) => ({ ...product, quantity: 1 }))
-      );
-    }
-    fetchData();
-  }, []);
+  const token = getCookies('token');
+  const decodedToken = jwtDecode(token.token);
+
+console.log(products);
+React.useEffect(() => {
+  async function fetchData() {
+    const response = await fetch(`http://localhost:3001/saler/getallprod`);
+    const data = await response.json();
+    setProducts(data.map((product: Product) => ({ ...product, quantity: 1 })));
+  }
+
+
+  fetchData();
+}, []);
   //yessine s work
   const addtocart = async (productId: number) => {
-    const response = await fetch(
-      `http://localhost:3001/panier/addtoCart/1/${productId}`,
-      {
-        method: "POST",
-      }
-    );
+    const response = await fetch(`http://localhost:3001/panier/addtoCart/${decodedToken.id}/${productId}`, {
+      method: 'POST',
+    });
     const data = await response.json();
     console.log(data);
   };
-  const addtowishlist = async (productId: number) => {
-    const response = await fetch(
-      `http://localhost:3001/wishlist/add/${productId}/1`,
-      {
-        method: "POST",
-      }
-    );
+  const addtowishlist= async (productId: number) => {
+    const response = await fetch(`http://localhost:3001/wishlist/add/${productId}/${decodedToken.id}`, {
+      method: 'POST',
+    });
+
     const data = await response.json();
     console.log(data);
   };

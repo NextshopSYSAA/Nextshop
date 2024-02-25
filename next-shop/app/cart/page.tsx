@@ -1,6 +1,8 @@
 "use client"
 import React from 'react';
 import anime from 'animejs/lib/anime.es.js';
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 
 interface Product {
   idproduct: number;
@@ -14,10 +16,13 @@ interface Product {
 
 export default function Cart() {
   const [products, setProducts] = React.useState<Product[]>([]);
-
+  
+  const token = getCookies('token');
+  const decodedToken = jwtDecode(token.token);
+  
   React.useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:3001/panier/getAllcarts/1`);
+      const response = await fetch(`http://localhost:3001/panier/getAllcarts/${decodedToken.id}`);
       const data = await response.json();
       setProducts(data.map((product: Product) => ({ ...product, quantity: 1 })));
     }
@@ -30,12 +35,23 @@ export default function Cart() {
   }
 
   const handleDelete = (productIdproduct: number) => {
-    fetch(`http://localhost:3001/panier/deletecart/1/${productIdproduct}`, {
+    fetch(`http://localhost:3001/panier/deletecart/${decodedToken.id}/${productIdproduct}`, {
       method: 'DELETE',
     })
       .then((response) => {
         if (!response.ok) throw Error('Failed to delete');
         setProducts((products) => products.filter((product) => product.idproduct !== productIdproduct));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleDeleteAll = () => {
+    fetch(`http://localhost:3001/panier/deleteallfromcart/${decodedToken.id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (!response.ok) throw Error('Failed to delete');
+        setProducts([]);
       })
       .catch((error) => console.log(error));
   };
@@ -53,6 +69,7 @@ export default function Cart() {
       anime.set(button, { rotate: 0 });
     }
   };
+
 
   return (
     <div className="max-w-6xl mx-auto p-8 rounded-md shadow-md flex flex-col">
@@ -147,7 +164,8 @@ export default function Cart() {
           </span>
         </div>
         <div className="mt-4 flex justify-center">
-          <button className="bg-[#241C24] text-white px-14 py-3 rounded-md text-lg hover:bg-[#D0CFD0] focus:outline-none focus:bg-[#A4907C]">
+          <button className="bg-[#241C24] text-white px-14 py-3 rounded-md text-lg hover:bg-[#D0CFD0] focus:outline-none focus:bg-[#A4907C]"
+           onClick={handleDeleteAll}>
             Checkout
           </button>
         </div>

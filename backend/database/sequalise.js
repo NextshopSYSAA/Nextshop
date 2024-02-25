@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
+
 require("dotenv").config();
 const database = process.env.DATABASE;
 const username = process.env.USERNAME;
