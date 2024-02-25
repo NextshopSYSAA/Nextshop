@@ -64,10 +64,10 @@ module.exports = {
       const values = {
         firstname,
         lastname,
-        email,
         role,
         phone,
         adress,
+        email,
         pwd : hashed,
       };
 
