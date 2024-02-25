@@ -26,10 +26,16 @@ const deletefrompanier = (id, oneProduct) => {
     where: { userIduser: id, productIdproduct: oneProduct }
   });
 }
+const deleteAllFromCart = (userId) => {
+  return Panier.destroy({
+    where: { userIduser: userId }
+  });
+}
+
 
 //add a product to the list of panier products
 const addtopanier = (carts) => {
   return Panier.create(carts)
 }
 
-module.exports = { getallpanier, deletefrompanier, addtopanier }
+module.exports = { getallpanier, deletefrompanier, addtopanier,deleteAllFromCart }

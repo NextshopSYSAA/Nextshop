@@ -1,6 +1,8 @@
 "use client"
 import React, { useRef, useEffect } from 'react';
 import anime from 'animejs/lib/anime.es.js';
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 
 const TrashIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
@@ -24,10 +26,14 @@ export default function Wishlist() {
   const promoRefs = useRef<Array<HTMLDivElement | null>>([]);
   const priceRefs = useRef<Array<HTMLSpanElement | null>>([]);
 
+  // Get user ID from token
+  const token = getCookies('token');
+  const decodedToken = jwtDecode(token.token);
+  
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3001/wishlist/getAllwishlist/1`);
+        const response = await fetch(`http://localhost:3001/wishlist/getAllwishlist/${decodedToken.id}`);
         const data = await response.json();
         setProducts(data.map((product: Product) => ({ ...product })));
       } catch (error) {
@@ -68,7 +74,7 @@ export default function Wishlist() {
   }, [products]);
 
   const handleDelete = (productIdproduct: number) => {
-    fetch(`http://localhost:3001/wishlist/deletewishlist/1/${productIdproduct}`, {
+    fetch(`http://localhost:3001/wishlist/deletewishlist/${decodedToken.id}/${productIdproduct}`, {
       method: 'DELETE',
     }).then((response) => {
       if (!response.ok) throw Error('Failed to delete');
@@ -77,7 +83,7 @@ export default function Wishlist() {
   };
 
   const addToCart = async (productId: number) => {
-    const response = await fetch(`http://localhost:3001/panier/addtoCart/1/${productId}`, {
+    const response = await fetch(`http://localhost:3001/panier/addtoCart/${decodedToken.id}/${productId}`, {
       method: 'POST',
     });
     const data = await response.json();
