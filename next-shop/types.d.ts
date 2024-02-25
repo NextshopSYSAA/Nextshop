@@ -17,3 +17,17 @@ interface Product {
     imgproducts: imgproducts[],
 }
 
+interface dectoken{
+
+        email: string,
+        id: number,
+        firstname: string,
+        role: string,
+        iat: number
+      
+} 
+
+interface token {
+    token : string
+}
+
