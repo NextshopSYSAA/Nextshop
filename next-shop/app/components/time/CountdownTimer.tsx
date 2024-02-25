@@ -37,48 +37,48 @@ const CountdownTimer = ({ expirationDate }) => {
     <div>
       <div className="w-[302px] h-[50px] relative">
               <div className="w-[46px] left-0 top-0 absolute flex-col justify-start items-start gap-1 inline-flex">
-                <div className="w-[31px] text-black text-xs font-medium font-['Poppins'] leading-[18px]">
+                <div className="w-[31px] text-[#241C24] text-xs font-medium font-['Poppins'] leading-[18px]">
                   Days
                 </div>
-                <div className="w-[46px] h-7 text-black text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
+                <div className="w-[46px] h-7 text-[#241C24] text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
                   03
                 </div>
               </div>
               <div className="w-[42px] h-[50px] left-[84px] top-0 absolute flex-col justify-start items-start gap-1 inline-flex">
-                <div className="w-[35px] text-black text-xs font-medium font-['Poppins'] leading-[18px]">
+                <div className="w-[35px] text-[#241C24] text-xs font-medium font-['Poppins'] leading-[18px]">
                   Hours
                 </div>
-                <div className="text-black text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
+                <div className="text-[#241C24] text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
                 <span>{String(timeLeft.hours).padStart(2, '0')}</span>
                 </div>
               </div>
               <div className="w-[49px] h-[50px] left-[164px] top-0 absolute flex-col justify-start items-start gap-1 inline-flex">
-                <div className="w-[49px] text-black text-xs font-medium font-['Poppins'] leading-[18px]">
+                <div className="w-[49px] text-[#241C24] text-xs font-medium font-['Poppins'] leading-[18px]">
                   Minutes
                 </div>
-                <div className="w-[39px] h-7 text-black text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
+                <div className="w-[39px] h-7 text-[#241C24] text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
                 <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
                 </div>
               </div>
               <div className="w-[51px] h-[50px] left-[251px] top-0 absolute flex-col justify-start items-start gap-1 inline-flex">
-                <div className="w-[52px] text-black text-xs font-medium font-['Poppins'] leading-[18px]">
+                <div className="w-[52px] text-[#241C24] text-xs font-medium font-['Poppins'] leading-[18px]">
                   Seconds
                 </div>
-                <div className="text-black text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
+                <div className="text-[#241C24] text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">
                 <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
                 </div>
               </div>
               <div className="left-[63px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
               </div>
               <div className="left-[143px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
               </div>
               <div className="left-[230px] top-[26px] absolute flex-col justify-start items-start gap-2 inline-flex">
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
-                <div className="w-1 h-1 bg-red-400 rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
+                <div className="w-1 h-1 bg-[#3066BE] rounded-full"></div>
               </div>
             </div>
     </div>

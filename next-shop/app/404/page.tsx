@@ -1,3 +1,4 @@
+
 'use client'
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs/lib/anime.es.js';
@@ -14,7 +15,7 @@ const page=()=>{
           easing: 'easeInOutSine',
           direction: 'alternate',
           scale: [{value: 1}, {value: 1.4}, {value: 1, delay: 250}],
-          rotateY: {value: '+=180', delay: 200},
+         rotateY: {value: '+=180', delay: 200},
         });
     
         animation.play();
@@ -1208,4 +1209,5 @@ const page=()=>{
     )
 }
 export default page
+
 

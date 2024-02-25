@@ -3,6 +3,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const userFunction = require("../database/userFunction");
+const { User } = require("../database/sequalise");
 const secretKey = process.env.JWT_SECRET;
 
 module.exports = {
@@ -30,20 +31,23 @@ module.exports = {
 
   UpdateUser: async (req, res) => {
     const id = req.params.iduser;
-    const { firstname, lastname, email, role, phone, adress, pwd ,image } = req.body;
-
+    const { firstName, lastName, email, role, phone, adress, password } = req.body;
     try {
-        const hashedPwd = await bcrypt.hash(pwd, 10);
-        const body = {
-            firstname,
-            lastname,
-            email,
-            role,
-            phone,
-            adress,
-            pwd: hashedPwd ,
-            image 
-        };
+      User.findOne(id)
+      bcrypt.compare(password,)
+      const hashedPwd = await bcrypt.hash(password, 10);
+      const body = {
+        firstname: firstName,
+        lastname: lastName,
+        email,
+        role,
+        phone,
+        adress,
+        pwd: hashedPwd 
+      };
+      console.log(body);
+      console.log(req.body, "request ");
+
 
         const results = await user.updateuser(id, body);
         res.status(201).json(results);
