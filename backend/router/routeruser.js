@@ -3,7 +3,7 @@ const controlleruser = require('../controller/usercontroller')
 const {checkToken} = require('../controller/authorization')
 
 
-Routeruser.get('/getusers',checkToken,controlleruser.GetAllUser)
+Routeruser.get('/getusers',controlleruser.GetAllUser)
 Routeruser.get('/getuser/:id',controlleruser.FindUserById)
 
 Routeruser.get('/getusers',controlleruser.GetAllUser)
