@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { getCookies } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
-
+import { getPathMatch } from "next/dist/shared/lib/router/utils/path-match";
 
 
 interface Product {
@@ -92,7 +92,7 @@ React.useEffect(() => {
             </div>
           </div>
         </div>
-        <div className="w-[1308px] justify-start items-start gap-[30px] inline-flex">
+        <div className="w-[1308px] justify-start items-start gap-[30px] inline-flex overflow-x-scroll">
           {/* the card of item */}
           {products.map((product: Product, index: number) => (
             // eslint-disable-next-line react/jsx-key
