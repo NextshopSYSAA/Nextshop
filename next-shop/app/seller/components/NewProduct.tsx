@@ -88,7 +88,7 @@ const NewProduct = () => {
                               <div className="text-sm  font-semibold text-gray-900">
                                 {ele.name}
                               </div>
-                              <div className="text-sm ">email</div>
+                              
                             </div>
                           </div>
                         </td>
@@ -96,7 +96,7 @@ const NewProduct = () => {
                           <div className="text-sm text-gray-900">
                             {ele.category}
                           </div>
-                          <div className="text-sm ">sddd</div>
+                          <div className="text-sm ">{ele.Descriptin}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span

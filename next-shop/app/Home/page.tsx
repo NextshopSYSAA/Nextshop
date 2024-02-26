@@ -9,7 +9,6 @@ import Over from "../components/over";
 const First = () => {
   return (
     <div>
-      
       <Hero/>
         <Sales/>
         <MyComponent/>  
@@ -17,6 +16,7 @@ const First = () => {
         <New/>
         <Over/>
     </div>
+    
   );
 };
 

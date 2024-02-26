@@ -30,6 +30,7 @@ const Productseller =  () => {
   
       fetchData();
     },[])
+    console.log(data);
     const deleteprod = (id : any)=>{
     
         axios.delete(`http://localhost:3001/saler/deleteprod/${dec.id}`)
@@ -115,7 +116,7 @@ const Productseller =  () => {
                           <div className="text-sm text-trueGray-300">
                             {ele.category}
                           </div>
-                          <div className="text-sm ">sddd</div>
+                          <div className="text-sm ">{ele.description}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
