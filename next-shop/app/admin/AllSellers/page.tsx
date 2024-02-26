@@ -35,19 +35,18 @@ export default function ListUsers() {
       </tr>
     </thead>
     <tbody>
-      {users.map((e: any) => (
-        <tr key={e.iduser} >
-          <td className="py-2 px-4 border-b text-start">{e.iduser}</td>
-          <td className="py-2 px-4 border-b text-start">{e.firstname}</td>
-          <td className="py-2 px-4 border-b text-start">{e.lastname}</td>
-          <td className={`py-2 px-4 border-b text-start ${e.role === 'seller' ? 'text-sky-600' : 'text-stone-400'}`}>{e.role}</td>
-          <button
-  className="bg-sky-300 text-white px-4 py-2 hover:bg-sky-500 flex items-center"
-  onClick={() => router.push(`/admin/ListUsers/${e.iduser}`)}
->
-  <CiCircleMore className="mr-2" /> more details...
-</button>        </tr>
-      ))}
+      {users.map((e:any)=>{
+        if (e.role==='seller')
+        return(
+            <tr key={e.iduser} >
+            <td className="py-2 px-4 border-b text-start">{e.iduser}</td>
+            <td className="py-2 px-4 border-b text-start">{e.firstname}</td>
+            <td className="py-2 px-4 border-b text-start">{e.lastname}</td>
+            <td className={`py-2 px-4 border-b text-start ${e.role === 'seller' ? 'text-sky-600' : 'text-stone-400'}`}>{e.role}</td>
+                  </tr>)
+      })
+        
+    }
     </tbody>
   </table>
 </div>
