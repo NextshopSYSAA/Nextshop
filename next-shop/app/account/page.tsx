@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-
+import Cookies  from "js-cookie";
+import { getCookies } from "cookies-next";
+import { jwtDecode } from "jwt-decode";
 interface User {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
   phone: string;
@@ -13,19 +15,24 @@ interface User {
 }
 
 const Edit = () => {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [firstname, setFirstName] = useState<string>("");
+  const [lastname, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [adress, setAdress] = useState<string>("");
   const [oldPassword, setOldPassword] = useState<string>("User.password");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
+ 
+  const token = getCookies('token');
+  const decodedToken = jwtDecode(token.token);
 
-  const updateProfile = async (e: any, userId: number | string, data: User) => {
-    e.preventDefault();
+console.log(decodedToken.id);
+console.log(decodedToken.firstname);
+
+  const updateProfile = async (data: User) => {
     try {
-      axios.put(`http://localhost:3001/user/updateuser/${1}`, data);
+      await axios.put(`http://localhost:3001/user/updateuser/${decodedToken.id}`, data);
       if (
         oldPassword === "User.password" &&
         password === passwordConfirmation
@@ -49,13 +56,13 @@ const Edit = () => {
         >
           <div style={{ display: "flex" }}>
             <a href="/home/My Account">Home /</a>
-            <p className="text-gray-400 font-bold hover:text-[#8D7B68]">
+            <p className="text-gray-400 font-bold hover:text-blue-500">
               My account
             </p>
           </div>
           <div style={{ display: "flex" }}>
             <p>Welcome </p>
-            <p className="text-[#865928] hover:text-[#8D7B68]"> UserName</p>
+            <p className="text-blue-800 hover:text-blue-500 uppercase">{decodedToken.firstname}</p>
           </div>
         </div>
 
@@ -71,22 +78,22 @@ const Edit = () => {
             <div>
               <div className="grid gap-2">
                 <h4 className="font-semibold">Manage My Account</h4>
-                <p className="text-gray-400 hover:text-[#865928] ml-7">
+                <p className="text-gray-400 hover:text-blue-800 ml-7">
                   My Profile
                 </p>
-                <p className="text-gray-400 hover:text-[#865928] ml-7">
+                <p className="text-gray-400 hover:text-blue-800 ml-7">
                   Adress Book
                 </p>
-                <p className="text-gray-400 hover:text-[#865928] ml-7 ">
+                <p className="text-gray-400 hover:text-blue-800 ml-7 ">
                   My Payment Options
                 </p>
               </div>
               <div className="grid gap-2">
                 <h4 className="font-semibold mt-4 ">My Orders</h4>
-                <p className="text-gray-400 hover:text-[#865928] ml-7">
+                <p className="text-gray-400 hover:text-blue-800 ml-7">
                   My Returns
                 </p>
-                <p className="text-gray-400 hover:text-[#865928] ml-7">
+                <p className="text-gray-400 hover:text-blue-800 ml-7">
                   My Cancellations
                 </p>
               </div>
@@ -96,7 +103,7 @@ const Edit = () => {
 
           <section className="p-14 shadow-md bg-slate-100">
             <form className="max-w-2xl mx-auto">
-              <p className="text-[#865928] font-semibold"> Edit Your Profil </p>
+              <p className="text-blue-800 font-semibold"> Edit Your Profil </p>
               <div className="grid md:grid-cols-2 md:gap-10">
                 <div className="relative z-0 w-96 mb-5 group">
                   <input
@@ -238,22 +245,22 @@ const Edit = () => {
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <button
                   type="button"
-                  className="text-gray-900 bg-white  focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                  className="text-gray-900 bg-white  focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                 >
                   <Link href=""> Cancel </Link>{" "}
                 </button>
 
                 <button
                   type="submit"
-                  className="focus:outline-none text-white bg-[#865928] hover:bg-[#8D7B68] focus:ring-4 focus:ring-[#F1DEC9] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                  onClick={(e) => {
-                    updateProfile(e, 1, {
-                      firstName: firstName,
-                      lastName: lastName,
+                  className="focus:outline-none text-white bg-blue-800 hover:bg-blue-200 focus:ring-4 focus:ring-[#F1DEC9] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                  onClick={() => {
+                    updateProfile({
+                      firstname: firstname,
+                      lastname: lastname,
                       email: email,
                       password: password,
                       phone: phone,
-                      adress: adress,
+                      adress: adress
                     });
                   }}
                 >
