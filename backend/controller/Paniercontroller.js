@@ -34,5 +34,16 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  deleteall:async(req,res)=>{
+const {id}=req.params
+try{
+  await Panier.deleteAllFromCart(Number (id))
+  res.send("all products deleted from cart")
+}
+catch{(err)=>{
+  console.log(err);
+}}
   }
+
 };

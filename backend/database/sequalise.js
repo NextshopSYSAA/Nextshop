@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+
 const sequelize = new Sequelize("teaa", "root", "root", {
 
 
@@ -29,7 +30,7 @@ const Product = sequelize.define(
     },
   },
 
-  { freezeTableName: true, timestamps: true }
+  { freezeTableName: true, timestamps: false }
 
 );
 
