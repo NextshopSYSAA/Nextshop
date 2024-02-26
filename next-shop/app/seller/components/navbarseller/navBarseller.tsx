@@ -34,7 +34,7 @@ const NavBar = () => {
           <ul className="w-[450px] flex justify-between items-center  text-sm/[16px] font-semibold  ">
             <motion.circle cx={500} animate={{ cx: [null, 100] }} />
             <li>
-              <Link href={"/Home"}>
+              <Link href={"/seller/homeseller"}>
                 <button>Home</button>
               </Link>
             </li>
