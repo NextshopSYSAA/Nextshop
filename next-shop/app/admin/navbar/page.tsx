@@ -11,10 +11,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebare from './sidebare';
 import SidebarManag from './sidebaremanaging'
+import MinBar from "@/app/seller/components/MinBar/MinBar";
 
 function Navbar(): JSX.Element {
   
   return (
+    <>
+    <MinBar/>
     <div className="h-[38px] w-[1170px] flex justify-between items-center mx-auto mt-4">
       <div className="h-[24px] w-[645px] flex justify-between items-center">
         <h1 className="text-2xl font-bold font-['Inter'] leading-normal tracking-wide">Exclusive</h1>
@@ -48,6 +51,8 @@ function Navbar(): JSX.Element {
         </button>
       </div>
     </div>
+    </>
+    
   );
 }
 

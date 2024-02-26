@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CiCircleMore } from "react-icons/ci";
-
+import Navbar from '../navbar/page';
+import MinBar from '@/app/seller/components/MinBar/MinBar';
 async function getusers(   ) {
   const res = await fetch('http://localhost:3001/user/getuserss');
   return res.json();
@@ -23,6 +24,9 @@ export default function ListUsers() {
   console.log(users, 'mmmmmm');
 
   return (
+ <div>
+  <MinBar/>
+   <Navbar/>
 <div className="container mx-auto p-4">
   <h2 className="text-2xl font-bold mb-4">User List</h2>
   <table className="min-w-full bg-white border border-solid shadow">
@@ -50,6 +54,7 @@ export default function ListUsers() {
       ))}
     </tbody>
   </table>
+</div>
 </div>
   );
 }

@@ -7,9 +7,9 @@ interface Option {
 
 const options: Option[] = [
   { id: 1, list: 'All Product'},
-  { id: 2, list: 'All Seller'},
-  { id: 3, list: 'All clients'},
-  { id: 4, list: 'All Admins'},
+  { id: 2, list: 'AllSellers'},
+  { id: 3, list: 'AllClient'},
+  { id: 4, list: 'ListUsers'},
 ];
 
 
@@ -43,7 +43,7 @@ const CustomSelects: React.FC = () => {
             <li key={option.id} onClick={() => handleOptionClick(option)} className="px-4 py-2 cursor-pointer  hover:bg-black hover:text-white">
               <div className="flex items-center">
                
-                  <div className="text-sm font-semibold">{option.list}</div>
+                  <div className="text-sm font-semibold"><a href={`/admin/${option.list}`}>{option.list}</a></div>
                 
               </div>
             </li>
