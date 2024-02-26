@@ -9,6 +9,8 @@ import { MdOutlineSecurityUpdateGood } from "react-icons/md";
 import { CiTwitter } from "react-icons/ci";
 import { CiInstagram } from "react-icons/ci";
 import { CiLinkedin } from "react-icons/ci";
+import MinBar from '../seller/components/MinBar/MinBar';
+import Nav from '../components/nav';
 
 
 
@@ -18,6 +20,8 @@ import { CiLinkedin } from "react-icons/ci";
 
 const page = () => {
   return (
+    <>
+    <Nav/>
     <div style={{marginBottom:'50px'}}>
         <div className='flex-column space-x-10 ' style={{paddingTop:'80px', paddingLeft:'150px'}} >
         <div  className='flex-column space-x-10 ' style={{paddingTop:'80px', paddingLeft:'50px'}}>
@@ -63,9 +67,9 @@ const page = () => {
         <div className="flex justify-center space-x-10" style={{paddingTop:'50px', paddingRight:"10%", paddingLeft:'7%'}}>
  
         <div className="box" style={{ border: '1px solid white', flex: 1, height:'400px', width:'100px', paddingTop: 0,textAlign: 'start' ,boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)' }}>
-    <img src="https://res.cloudinary.com/ali22/image/upload/v1698013241/koss/etpn0ndqpk0efxcr1nwf.jpg" alt="Your Image" style={{ width: '100%', height: '75%' }} />
+    <img src="https://cdn.discordapp.com/attachments/1209837048328884295/1211608824356675614/IMG_20240121_145728.jpg?ex=65eed1a6&is=65dc5ca6&hm=e069a7c085bce1da6618ecd35a518ab9130258fda1b60105495db30ebda123f6&" alt="Your Image" style={{ width: '100%', height: '75%' }} />
     <p className="font-bold text-black text-lg mt-2">Salah Mbarki</p>
-    <p >USER SIGN</p>
+    <p >Amine</p>
     <div className='flex space-x-4' style={{paddingTop:'7px'}}>
     <CiTwitter className="hover:text-blue-500 cursor-pointer"  />
     <CiInstagram className="hover:text-blue-500 cursor-pointer"  />
@@ -74,9 +78,9 @@ const page = () => {
     
 </div>
    <div className="box" style={{ border: '1px solid white', flex: 1, height:'400px', width:'100px', paddingTop: 0,textAlign: 'start' ,boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)' }}>
-    <img src="https://res.cloudinary.com/ali22/image/upload/v1698013241/koss/etpn0ndqpk0efxcr1nwf.jpg" alt="Your Image" style={{ width: '100%', height: '75%' }} />
+    <img src="https://cdn.discordapp.com/attachments/1209837048328884295/1211608655926140990/IMG-20240226-WA0002.jpg?ex=65eed17e&is=65dc5c7e&hm=37792af3ce1ece4e309d5042592bbcdfc5506dd1731390970ff442bcb7f8ce95&" alt="Your Image" style={{ width: '100%', height: '75%' }} />
     <p className="font-bold text-black text-lg mt-2">Salah Mbarki</p>
-    <p >USER SIGN</p>
+    <p >Aymen "smela alaiay "</p>
     <div className='flex space-x-4' style={{paddingTop:'7px'}}>
     <CiTwitter className="hover:text-blue-500 cursor-pointer" />
     <CiInstagram  className="hover:text-blue-500 cursor-pointer" />
@@ -97,9 +101,9 @@ const page = () => {
         <div className="flex justify-center space-x-10" style={{paddingTop:'50px', paddingRight:"20%", paddingLeft:'20%' }}>
  
         <div className="box" style={{ border: '1px solid white', flex: 1, height:'400px', width:'100px', paddingTop: 0,textAlign: 'start' ,boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)' }}>
-    <img src="https://res.cloudinary.com/ali22/image/upload/v1698013241/koss/etpn0ndqpk0efxcr1nwf.jpg" alt="Your Image" style={{ width: '100%', height: '75%' }} />
+    <img src="https://cdn.discordapp.com/attachments/1209837048328884295/1210516805873967204/347603825_1910332982659783_5110332151582693353_n.jpg?ex=65ead8a0&is=65d863a0&hm=3a0a656b0b1c0685df6af8288fbebedf502c71dc12d90db30b8472750e6c6622&" alt="Your Image" style={{ width: '100%', height: '75%' }} />
     <p className="font-bold text-black text-lg mt-2">Salah Mbarki</p>
-    <p >USER SIGN</p>
+    <p >Yassin</p>
     <div className='flex space-x-4' style={{paddingTop:'7px'}}>
     <CiTwitter className="hover:text-blue-500 cursor-pointer"  />
     <CiInstagram className="hover:text-blue-500 cursor-pointer"  />
@@ -146,6 +150,8 @@ const page = () => {
 </div>
 
     </div>
+    </>
+ 
   )
 }
 
