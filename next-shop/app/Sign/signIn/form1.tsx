@@ -62,12 +62,12 @@ const Form1 = () => {
     await sleep(2000);
     if (success) {
       if (decode.role === 'admin') {
-        navigate('/Sign/aboutUs');
+        navigate('/admin');
       } else if (decode.role === 'seller') {
         console.log('It is a seller');
         navigate('/seller')
       } else if (decode.role === 'client') {
-        console.log('It is a client');
+        console.log('/Home');
       }
     }
   };
