@@ -31,32 +31,38 @@ module.exports = {
 
   UpdateUser: async (req, res) => {
     const id = req.params.iduser;
-    const { firstName, lastName, email, role, phone, adress, password } = req.body;
+    const { firstname, lastname, email, role, phone, adress, password } = req.body;
+
     try {
-      User.findOne(id)
-      bcrypt.compare(password,)
-      const hashedPwd = await bcrypt.hash(password, 10);
-      const body = {
-        firstname: firstName,
-        lastname: lastName,
-        email,
-        role,
-        phone,
-        adress,
-        pwd: hashedPwd 
-      };
-      console.log(body);
-      console.log(req.body, "request ");
+        const ss = await User.findOne({ iduser: id });
 
+        if (!ss) {
+            return res.status(404).json({ error: 'User not found' });
+        }
 
-        const results = await user.updateuser(id, body);
-        res.status(201).json(results);
+        if (password) {
+            const hashedPwd = await bcrypt.hash(password, 10);
+            user.pwd = hashedPwd;
+        }
+
+        // Update other user fields
+        const obj = {
+          firstname :firstname,
+        lastname :lastname,
+        email :email,
+        role :role,
+        phone :phone,
+        adress :adress
+        }
+
+        const result = await user.updateuser(id,obj);
+        res.status(200).json(result);
     } catch (err) {
         console.log('Error in updating:', err);
         res.status(500).json({ error: 'Internal server error' });
     }
-},
-
+}
+,
   addAccount: async (req, res) => {
     const { firstname, lastname, role, phone, adress, email, pwd } = req.body;
     const hashed = await bcrypt.hash(pwd, 10); 
