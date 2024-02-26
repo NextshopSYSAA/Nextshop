@@ -16,7 +16,6 @@ export default function HomeLayout({
     return (
       <html lang="en">
         <body>{children}
-        <Nav/>
         <Hero/>
         <Sales/>
         <MyComponent/>  
