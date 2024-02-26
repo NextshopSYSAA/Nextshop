@@ -4,7 +4,9 @@ import Navbar from '../navbar/page'
 const page = () => {
   return (
     <div>
-      <div><Navbar/></div>
+      <div>
+        <Navbar/>
+      </div>
       
     </div>
   )

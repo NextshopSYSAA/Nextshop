@@ -4,15 +4,17 @@ import Navbar from '../navbar/page';
 interface Option {
   id: number;
   category: string;
-  name: string;
+  Quantity: string;
   avatarUrl: string;
 }
 
 const options: Option[] = [
-  { id: 1, category: 'Electronic', name: '', avatarUrl: 'https://img.freepik.com/free-photo/modern-stationary-collection-arrangement_23-2149309649.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1708646400&semt=ais' },
-  { id: 2, category: 'Clothes', name: '', avatarUrl: 'https://images.herzindagi.info/image/2022/May/clothes-to-repeat-fashion-tips.jpg' },
-  { id: 3, category: 'Furniture', name: '', avatarUrl: 'https://hogfurniture.com.ng/cdn/shop/articles/Home_collection.png?v=1657288179' },
-  { id: 4, category: 'Cosmetics', name: '', avatarUrl: 'https://t4.ftcdn.net/jpg/01/24/86/35/360_F_124863579_IFn4aOOsedvSCmJpypm8ld0qT6tjL9fT.jpg' },
+  { id: 1, category: 'Phones', Quantity: '5', avatarUrl: 'https://cdn.tmobile.com/content/dam/t-mobile/en-p/cell-phones/apple/Apple-iPhone-15-Pro-Max/Blue-Titanium/Apple-iPhone-15-Pro-Max-Blue-Titanium-thumbnail.png' },
+  { id: 2, category: 'Computers', Quantity: '14', avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlBsnNUIhpAk3JpZE6_KlQ2zIpfzrnQjGP_A&usqp=CAU' },
+  { id: 3, category: 'SmartWatch', Quantity: '20', avatarUrl: 'https://ma.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/00/850354/1.jpg?3058' },
+  { id: 4, category: 'Camera', Quantity: '17', avatarUrl: 'https://m.media-amazon.com/images/I/51T3ZomxaCL._AC_UF894,1000_QL80_.jpg' },
+  { id: 5, category: 'HeadPhones', Quantity: '28', avatarUrl: 'https://m.media-amazon.com/images/I/71C-sMCpLWL._AC_UF1000,1000_QL80_.jpg' },
+  { id: 6, category: 'Gaming', Quantity: '9', avatarUrl: 'https://www.tunisianet.com.tn/85554-large/console-playstation-4-hits-500-go-3-jeux.jpg' },
 ];
 
 const CustomSelect: React.FC = () => {
@@ -37,17 +39,20 @@ const CustomSelect: React.FC = () => {
         <div>
          <Navbar/>
          </div>
+         <section>
+   <div className="font-bold font-['Inter'] uppercase mt-20 text-4xl text-center text-blue-600 ">All Products</div>
+   </section>
         <div  style={{"display":"flex","justifyContent":"space-around","gap":"4rem"}} className='ml-28 mt-20'>
        
     <section className='w-3/4'>
     <div className="grid grid-cols-4 gap-12 justify-center">
     {options.map(option => (
         <div className='bg-[#f5f5f5] w-64'>
-            <div className='text-center font-semibold'>25 Products</div>
+            <div className='text-center font-semibold text-[#241C24]'>{option.Quantity} Product</div>
         <div>
-            <img src={option.avatarUrl} alt="" className='w-full h-40'/>
+            <img src={option.avatarUrl} alt="" className='w-full h-52'/>
         </div>
-        <div className='text-center font-bold'>{option.category}</div>
+        <div className='text-center font-bold text-[#241C24] mt-7'>{option.category}</div>
         </div>
     ))}
 </div>
@@ -55,9 +60,6 @@ const CustomSelect: React.FC = () => {
 
  
 </div>
-<section>
-   <div className="font-bold font-['Inter'] uppercase mt-10 text-4xl text-center">The best sellers</div>
-   </section>
     </div>
   );
 };

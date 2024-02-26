@@ -11,10 +11,12 @@ interface Option {
 }
 
 const options: Option[] = [
-  { id: 1, category: 'Electronic', name: '', avatarUrl: 'https://img.freepik.com/free-photo/modern-stationary-collection-arrangement_23-2149309649.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1708646400&semt=ais' },
-  { id: 2, category: 'Clothes', name: '', avatarUrl: 'https://images.herzindagi.info/image/2022/May/clothes-to-repeat-fashion-tips.jpg' },
-  { id: 3, category: 'Furniture', name: '', avatarUrl: 'https://hogfurniture.com.ng/cdn/shop/articles/Home_collection.png?v=1657288179' },
-  { id: 4, category: 'Cosmetics', name: '', avatarUrl: 'https://t4.ftcdn.net/jpg/01/24/86/35/360_F_124863579_IFn4aOOsedvSCmJpypm8ld0qT6tjL9fT.jpg' },
+  { id: 1, category: 'Phones', name: '', avatarUrl: 'https://cdn.tmobile.com/content/dam/t-mobile/en-p/cell-phones/apple/Apple-iPhone-15-Pro-Max/Blue-Titanium/Apple-iPhone-15-Pro-Max-Blue-Titanium-thumbnail.png' },
+  { id: 2, category: 'Computers', name: '', avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlBsnNUIhpAk3JpZE6_KlQ2zIpfzrnQjGP_A&usqp=CAU' },
+  { id: 3, category: 'SmartWatch', name: '', avatarUrl: 'https://ma.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/00/850354/1.jpg?3058' },
+  { id: 4, category: 'Camera', name: '', avatarUrl: 'https://m.media-amazon.com/images/I/51T3ZomxaCL._AC_UF894,1000_QL80_.jpg' },
+  { id: 5, category: 'HeadPhones', name: '', avatarUrl: 'https://m.media-amazon.com/images/I/71C-sMCpLWL._AC_UF1000,1000_QL80_.jpg' },
+  { id: 6, category: 'Gaming', name: '', avatarUrl: 'https://www.tunisianet.com.tn/85554-large/console-playstation-4-hits-500-go-3-jeux.jpg' },
 ];
 
 

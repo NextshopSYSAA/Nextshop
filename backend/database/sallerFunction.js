@@ -59,7 +59,7 @@ const getAllProductAvailable = () => {
 
 // get product by category
 const getProductByCategory = (category) => {
-  return Product.findAll({ where: { category: category } });
+  return Product.findAll({ where: { category: category } ,include: [ImgProduct]});
 };
 
 // get product for promotion
