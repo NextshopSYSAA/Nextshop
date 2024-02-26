@@ -85,8 +85,8 @@ const addtowishlist= async (id: number) => {
 //
 
   return (
-    <div className="flex w-full h-[600px]  flex-row items-center">
-      <div className="w-1/3 h-[450px] ml-4">
+    <div className="flex w-full h-[600px] justify-center   items-center">
+      <div className="w-full h-[450px] ml-3 flex justify-center   ">
         <div className="flex justify-center items-center w-1/2  mt-12">
           <div className="flex flex-col justify-between  mt-4 w-1/6">
             {photo?.slice(1).map((ele, index) => {
@@ -112,7 +112,7 @@ const addtowishlist= async (id: number) => {
             </div>
           </div>
         </div>
-
+<div className="flex-col">
         <div className="flex-col">
           <div className=" flex-col text-black text-xl font-semibold font-Inter'] leading-normal-wide">
             <div>{product?.name}</div>{" "}
@@ -313,8 +313,7 @@ const addtowishlist= async (id: number) => {
             </div>
           </div>
         </div>
-
-        <div className="flex justify-center items-center w-1/2  mt-12"></div>
+</div>
       </div>
     </div>
   );
