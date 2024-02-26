@@ -1,6 +1,8 @@
 'use client'
 import React, { useEffect,useState } from 'react'
 import axios from 'axios'
+import MinBar from '@/app/seller/components/MinBar/MinBar';
+import Navbar from '@/app/admin/navbar/page';
 
 interface Product {
   idproduct: number;
@@ -37,6 +39,8 @@ console.log(category);
 
 
   return (
+    <div>
+      <Navbar/>
     <div className="p-4">
     <h1 className="text-3xl font-bold text-gray-800 mb-4 border-b-4 border-blue-500 pb-2">Products</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -61,6 +65,7 @@ console.log(category);
         </div>
       ))}
     </div>
+  </div>
   </div>
   )
 }
