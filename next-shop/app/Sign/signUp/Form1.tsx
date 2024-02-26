@@ -1,4 +1,6 @@
 "use client";
+import Link from 'next/link'
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -176,7 +178,7 @@ const Form1 = () => {
             </button>
             <div className="flex flex-row space-x-6">
               <h6 className="text-sm text-[#64748b] ">Already have account?</h6>
-              <h6 className="text-sm">log in </h6>
+              <Link href="\Sign\signIn"> <h6 className="text-sm">log in </h6></Link>
             </div>
           </div>
         </div>
